@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation | Muhammed Ajas P & Saniya Sabah</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400;1,700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            desert: {
+              sand: '#fbf6f0',
+              linen: '#f3ece2',
+              rose: '#c49a82',
+              dustyRose: '#a8785e',
+              oud: '#6f4e37',
+              brass: '#8e6446',
+              deepText: '#3a271d',
+              cardBg: 'rgba(251, 246, 240, 0.85)'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            arabic: ['Amiri', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at 15% 15%, #faf3eb 0%, #f1e4d6 45%, #e5d2c1 100%);
+      color: #3a271d;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .rose-gradient-text {
+      background: linear-gradient(135deg, #8e6446 0%, #b07d5d 50%, #6f4e37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cashmere-card {
+      background: rgba(251, 246, 240, 0.88);
+      border: 1px solid rgba(196, 154, 130, 0.35);
+      box-shadow: 
+        0 18px 40px -10px rgba(111, 78, 55, 0.12),
+        0 4px 14px -2px rgba(196, 154, 130, 0.15);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Screen Slide-Up */
+    #coverPage {
+      transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease-in-out;
+    }
+    #coverPage.opened {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased relative selection:bg-desert-dustyRose selection:text-white">
+
+  <!-- Ambient Shading Orbs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[580px] h-[580px] rounded-full bg-[#dfc5b4]/40 blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-[-15%] right-[-10%] w-[640px] h-[640px] rounded-full bg-[#cbab97]/35 blur-[160px] pointer-events-none -z-10"></div>
+
+  <!-- Audio Element -->
+  <audio id="bgAudio" loop preload="auto" playsinline>
+    <source src="https://marriage-invitation-5m7k.onrender.com/audio/wedding-nasheed.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ==================================================== -->
+  <!-- 1. FIRST PAGE: ULTRA-CLEAN MINIMALIST MONOGRAM COVER -->
+  <!-- ==================================================== -->
+  <div id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between bg-[#fbf6f0] px-6 py-12 select-none">
+    
+    <!-- Top Header -->
+    <div class="text-center pt-6 space-y-1">
+      <p class="font-arabic text-2xl rose-gradient-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <p class="font-serif italic text-xs tracking-[0.35em] text-desert-dustyRose uppercase">Wedding Invitation</p>
+    </div>
+
+    <!-- Center Monogram: Clean, Frameless, Pure Typography -->
+    <div class="flex flex-col items-center cursor-pointer group" onclick="openInvitation()">
+      <div class="relative flex items-center justify-center select-none py-6">
+        <span class="font-serif italic text-7xl sm:text-8xl md:text-9xl font-normal tracking-tight -mr-2 rose-gradient-text">A</span>
+        <span class="font-script text-6xl sm:text-7xl md:text-8xl text-desert-rose opacity-90 mx-2">&amp;</span>
+        <span class="font-serif italic text-7xl sm:text-8xl md:text-9xl font-normal tracking-tight -ml-2 mt-8 rose-gradient-text">S</span>
+      </div>
+
+      <!-- Subtle Accent Divider -->
+      <div class="flex items-center justify-center space-x-3 text-desert-rose/60 pt-4">
+        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
+        <span class="text-xs">✦</span>
+        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
+      </div>
+
+      <!-- Minimal Tap Indicator -->
+      <div class="mt-8 text-center space-y-1">
+        <p class="font-serif italic text-xs tracking-[0.35em] text-desert-deepText uppercase group-hover:tracking-[0.45em] transition-all duration-300">
+          Tap To Enter
+        </p>
+        <p class="font-arabic italic text-xs text-desert-dustyRose">انقر لفتح الدعوة</p>
+      </div>
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="w-full max-w-xs flex items-center justify-between px-4 pb-2">
+      <!-- Music Toggle -->
+      <button id="splashMusicToggle" type="button" class="flex items-center space-x-2 text-desert-oud hover:text-desert-brass transition-all cursor-pointer" aria-label="Toggle music">
+        <div class="w-8 h-8 rounded-full border border-desert-rose/40 flex items-center justify-center bg-white/50 pointer-events-none">
+          <svg id="splashIconPlay" class="w-4 h-4 hidden text-desert-dustyRose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+          </svg>
+          <svg id="splashIconPause" class="w-4 h-4 block text-desert-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+          </svg>
+        </div>
+        <span class="font-serif italic text-xs tracking-wider uppercase pointer-events-none">Sound</span>
+      </button>
+
+      <!-- Location Pin -->
+      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-desert-oud hover:text-desert-brass transition-all" aria-label="Open venue location">
+        <span class="font-serif italic text-xs tracking-wider uppercase">Venue</span>
+        <div class="w-8 h-8 rounded-full border border-desert-rose/40 flex items-center justify-center bg-white/50">
+          <svg class="w-4 h-4 text-desert-dustyRose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- 2. MAIN INVITATION SITE (Inside Content)             -->
+  <!-- ==================================================== -->
+
+  <button id="mainMusicToggle" type="button" class="fixed bottom-6 right-6 z-40 bg-desert-sand/95 border border-desert-rose/50 text-desert-oud p-3.5 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Toggle music">
+    <svg id="mainIconPlay" class="w-5 h-5 hidden text-desert-dustyRose pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+    </svg>
+    <svg id="mainIconPause" class="w-5 h-5 block text-desert-rose pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+    </svg>
+  </button>
+
+  <!-- Hero Section -->
+  <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative pt-12 pb-16">
+    <div class="space-y-6 max-w-2xl mx-auto">
+      
+      <div class="flex items-center justify-center space-x-3 text-desert-rose">
+        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
+        <span class="font-arabic text-2xl rose-gradient-text">﷽</span>
+        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
+      </div>
+
+      <p class="font-serif italic tracking-[0.25em] text-xs sm:text-sm text-desert-dustyRose uppercase">
+        Together with our beloved families
+      </p>
+
+      <!-- Couple Names -->
+      <div class="space-y-3 py-4">
+        <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
+          Muhammed Ajas P
+        </h1>
+        <p class="font-arabic text-2xl rose-gradient-text">محمد أجاس</p>
+        
+        <div class="flex items-center justify-center space-x-4">
+          <span class="h-[1px] w-12 bg-desert-rose/40"></span>
+          <span class="font-script text-3xl text-desert-rose">&amp;</span>
+          <span class="h-[1px] w-12 bg-desert-rose/40"></span>
+        </div>
+
+        <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
+          Saniya Sabah
+        </h1>
+        <p class="font-arabic text-2xl rose-gradient-text">صانية صباح</p>
+      </div>
+
+      <p class="font-serif italic text-desert-oud text-base md:text-lg max-w-md mx-auto leading-relaxed">
+        Request the pleasure of your presence to celebrate our marriage ceremony.
+      </p>
+
+      <!-- Date Badge -->
+      <div class="inline-block cashmere-card px-7 py-2.5 rounded-full mt-4">
+        <p class="font-serif italic text-sm text-desert-deepText tracking-wider">
+          Saturday, 21 November 2026 • 7:00 PM
+        </p>
+      </div>
+
+      <!-- Scroll Prompt -->
+      <div class="pt-10">
+        <a href="#countdown" class="inline-flex flex-col items-center text-xs tracking-widest text-desert-dustyRose hover:text-desert-deepText uppercase transition-colors">
+          <span class="font-serif italic">Scroll to Explore</span>
+          <svg class="w-4 h-4 mt-2 animate-bounce text-desert-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Countdown Section -->
+  <section id="countdown" class="py-16 px-4 border-y border-desert-rose/25 bg-desert-linen/40">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="font-serif italic text-2xl md:text-3xl rose-gradient-text">
+        Countdown
+      </h2>
+      <p class="font-serif italic text-xs text-desert-dustyRose tracking-wider uppercase mt-1 mb-8">
+        Until our blessed day
+      </p>
+
+      <div class="grid grid-cols-4 gap-3 md:gap-6">
+        <div class="cashmere-card p-4 rounded-xl text-center">
+          <span id="days" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
+          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Days</span>
+        </div>
+        <div class="cashmere-card p-4 rounded-xl text-center">
+          <span id="hours" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
+          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Hours</span>
+        </div>
+        <div class="cashmere-card p-4 rounded-xl text-center">
+          <span id="minutes" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
+          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Minutes</span>
+        </div>
+        <div class="cashmere-card p-4 rounded-xl text-center">
+          <span id="seconds" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
+          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Details -->
+  <section id="details" class="py-20 px-4 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="font-serif italic text-3xl rose-gradient-text">
+        Event Details
+      </h2>
+      <div class="h-[1px] w-16 bg-desert-rose/40 mx-auto mt-2"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Ceremony Card -->
+      <div class="cashmere-card rounded-2xl p-8 text-center space-y-3">
+        <p class="font-arabic text-xl rose-gradient-text">عقد النكاح</p>
+        <h3 class="font-serif italic text-2xl text-desert-deepText">Nikah Ceremony</h3>
+        <p class="font-serif italic text-sm text-desert-oud">Saturday, 21 November 2026</p>
+        <div class="inline-block border border-desert-rose/40 bg-white/80 text-desert-deepText font-serif italic text-xs font-semibold px-5 py-1.5 rounded-full shadow-inner">
+          7:00 PM
+        </div>
+      </div>
+
+      <!-- Venue Card -->
+      <div class="cashmere-card rounded-2xl p-8 text-center space-y-3">
+        <p class="font-arabic text-xl rose-gradient-text">مكان الحفل</p>
+        <h3 class="font-serif italic text-2xl text-desert-deepText">Punathil House</h3>
+        <p class="font-serif italic text-base text-desert-dustyRose font-medium">Purameri, Kerala</p>
+        <p class="font-serif italic text-xs text-desert-oud/80">Join us with your loved ones</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Dynamic QR -->
+  <section id="location" class="py-20 px-4 border-y border-desert-rose/25 bg-desert-linen/40 text-center">
+    <div class="max-w-xl mx-auto space-y-6">
+      <h2 class="font-serif italic text-3xl rose-gradient-text">
+        Location &amp; Directions
+      </h2>
+      <p class="font-serif italic text-desert-oud text-sm">
+        Punathil House, Purameri. Scan below or click the button to navigate directly.
+      </p>
+
+      <div>
+        <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-gradient-to-r from-desert-rose to-desert-dustyRose hover:brightness-105 text-white font-serif italic text-sm font-semibold px-8 py-3 rounded-full transition-all shadow-md shadow-desert-dustyRose/25">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          Open in Google Maps
+        </a>
+      </div>
+
+      <div class="pt-4 inline-block">
+        <div class="p-3 bg-white border border-desert-rose/40 rounded-2xl shadow-lg">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
+               alt="Location QR Code" 
+               class="w-32 h-32 mx-auto rounded-lg" 
+               loading="lazy" />
+        </div>
+        <p class="font-serif italic text-xs text-desert-dustyRose mt-3">Scan with mobile to navigate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warm Note -->
+  <section class="py-16 px-4 text-center">
+    <div class="max-w-md mx-auto space-y-2">
+      <p class="font-arabic text-lg rose-gradient-text">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+      <p class="font-serif italic text-xl text-desert-deepText">
+        "Your presence and heartfelt prayers will make our day truly special."
+      </p>
+    </div>
+  </section>
+
+  <!-- Venue Directions Link -->
+  <section class="pb-16 px-4 max-w-sm mx-auto">
+    <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="cashmere-card hover:bg-white p-4 rounded-xl flex items-center justify-center space-x-3 transition-colors shadow-sm text-center">
+      <div class="p-2.5 rounded-lg bg-desert-rose/15 text-desert-oud">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+        </svg>
+      </div>
+      <div class="text-left">
+        <p class="font-serif italic text-sm font-semibold text-desert-deepText">Venue Directions</p>
+        <p class="font-serif italic text-xs text-desert-dustyRose">Punathil House, Purameri</p>
+      </div>
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-desert-rose/25 text-center space-y-1">
+    <p class="font-serif italic text-xs tracking-widest text-desert-dustyRose uppercase">With Warm Regards</p>
+    <p class="font-serif italic text-xl rose-gradient-text font-medium">Punathil Family</p>
+  </footer>
+
+  <!-- Unified Audio Engine & UI Controller -->
+  <script>
+    const coverPage = document.getElementById("coverPage");
+    const audio = document.getElementById("bgAudio");
+
+    // 46% Maximum Volume Limit Guard
+    const MAX_VOL = 0.46;
+    audio.volume = MAX_VOL;
+    audio.addEventListener("volumechange", () => {
+      if (audio.volume > MAX_VOL) {
+        audio.volume = MAX_VOL;
+      }
+    });
+
+    const splashIconPlay = document.getElementById("splashIconPlay");
+    const splashIconPause = document.getElementById("splashIconPause");
+    const mainIconPlay = document.getElementById("mainIconPlay");
+    const mainIconPause = document.getElementById("mainIconPause");
+
+    // Function to render icon state matching audio playback
+    function renderIcons(isPlaying) {
+      if (isPlaying) {
+        splashIconPlay.classList.remove("hidden");
+        splashIconPause.classList.add("hidden");
+        mainIconPlay.classList.remove("hidden");
+        mainIconPause.classList.add("hidden");
+      } else {
+        splashIconPlay.classList.add("hidden");
+        splashIconPause.classList.remove("hidden");
+        mainIconPlay.classList.add("hidden");
+        mainIconPause.classList.remove("hidden");
+      }
+    }
+
+    // Direct event listener binding so buttons never desync
+    audio.addEventListener("play", () => renderIcons(true));
+    audio.addEventListener("playing", () => renderIcons(true));
+    audio.addEventListener("pause", () => renderIcons(false));
+    audio.addEventListener("ended", () => renderIcons(false));
+
+    function playAudioSafe() {
+      audio.volume = MAX_VOL;
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise.catch((err) => {
+          console.warn("Playback paused until interaction:", err);
+          renderIcons(false);
+        });
+      }
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function openInvitation() {
+      coverPage.classList.add("opened");
+      playAudioSafe();
+    }
+
+    function toggleAudio(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      if (audio.paused) {
+        playAudioSafe();
+      } else {
+        pauseAudio();
+      }
+    }
+
+    // Direct click binding
+    document.getElementById("splashMusicToggle").onclick = toggleAudio;
+    document.getElementById("mainMusicToggle").onclick = toggleAudio;
+
+    // Live Countdown targeting 7:00 PM IST on 21 Nov 2026
+    const targetDate = new Date("2026-11-21T19:00:00+05:30").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff > 0) {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = String(d).padStart(2, '0');
+        document.getElementById("hours").textContent = String(h).padStart(2, '0');
+        document.getElementById("minutes").textContent = String(m).padStart(2, '0');
+        document.getElementById("seconds").textContent = String(s).padStart(2, '0');
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
