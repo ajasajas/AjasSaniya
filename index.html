@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Invitation | Muhammed Ajas P & Saniya Sabah</title>
+  <title>Wedding Invitation | Muhammed Ajas & Saniya Sabah</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,6 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- html2canvas for instant, client-side downloadable single-page card -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -74,39 +72,6 @@
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
-    }
-
-    /* Off-screen Downloadable Card Template */
-    #printableCardContainer {
-      position: fixed;
-      left: -9999px;
-      top: 0;
-      width: 700px;
-      height: 1020px;
-      background: #faf5ee;
-      padding: 30px;
-      z-index: -100;
-      box-sizing: border-box;
-    }
-
-    .card-border-outer {
-      border: 2px solid #c49a82;
-      height: 100%;
-      padding: 10px;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    .card-border-inner {
-      border: 1px solid rgba(196, 154, 130, 0.5);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 44px 32px;
-      box-sizing: border-box;
-      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #faf4ed 100%);
     }
   </style>
 </head>
@@ -185,7 +150,7 @@
   </div>
 
   <!-- ==================================================== -->
-  <!-- 2. MAIN INVITATION SITE (Inside Content)             -->
+  <!-- 2. MAIN INVITATION SITE                              -->
   <!-- ==================================================== -->
 
   <button id="mainMusicToggle" type="button" class="fixed bottom-6 right-6 z-40 bg-desert-sand/95 border border-desert-rose/50 text-desert-oud p-3.5 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Toggle music">
@@ -214,7 +179,7 @@
       <!-- Couple Names -->
       <div class="space-y-3 py-4">
         <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
-          Muhammed Ajas P
+          Muhammed Ajas
         </h1>
         <p class="font-arabic text-2xl rose-gradient-text">محمد أجاس</p>
         
@@ -227,7 +192,7 @@
         <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
           Saniya Sabah
         </h1>
-        <p class="font-arabic text-2xl rose-gradient-text">صانية صباح</p>
+        <p class="font-arabic text-2xl rose-gradient-text">سانية صباح</p>
       </div>
 
       <p class="font-serif italic text-desert-oud text-base md:text-lg max-w-md mx-auto leading-relaxed">
@@ -358,9 +323,7 @@
     </div>
   </section>
 
-  <!-- ==================================================== -->
-  <!-- ACTION BUTTONS: VENUE DIRECTIONS & DOWNLOAD CARD     -->
-  <!-- ==================================================== -->
+  <!-- Action Buttons: Venue Directions & Download Card -->
   <section class="pb-16 px-4 max-w-xl mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       
@@ -403,80 +366,7 @@
     <p class="font-serif italic text-xl rose-gradient-text font-medium">Punathil Family</p>
   </footer>
 
-  <!-- ==================================================== -->
-  <!-- 3. OFF-SCREEN SINGLE PAGE WEDDING CARD TEMPLATE      -->
-  <!-- ==================================================== -->
-  <div id="printableCardContainer">
-    <div class="card-border-outer">
-      <div class="card-border-inner">
-        
-        <!-- Header with generous spacing for Bismillah & Title -->
-        <div class="text-center w-full flex flex-col items-center">
-          <p class="font-arabic text-3xl text-[#6f4e37] leading-[2.2] pb-2 tracking-normal">
-            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-          </p>
-
-          <!-- Divider between Arabic & English title to prevent overlap -->
-          <div class="flex items-center justify-center space-x-2 my-2 w-full">
-            <span class="h-[1px] w-12 bg-[#c49a82]/50"></span>
-            <span class="text-[10px] text-[#c49a82]">✦</span>
-            <span class="h-[1px] w-12 bg-[#c49a82]/50"></span>
-          </div>
-
-          <p class="font-serif italic text-xs uppercase tracking-[0.38em] text-[#a8785e] pt-1">
-            Wedding Invitation
-          </p>
-          <p class="font-serif italic text-sm text-[#8e6446] pt-3">
-            Together with our beloved families
-          </p>
-        </div>
-
-        <!-- Monogram & Names -->
-        <div class="text-center space-y-3 my-auto">
-          <div class="font-serif italic text-6xl text-[#6f4e37] tracking-wider mb-2">
-            A <span class="font-script text-5xl text-[#c49a82]">&amp;</span> S
-          </div>
-
-          <div class="space-y-1">
-            <h1 class="font-serif italic text-4xl text-[#3a271d] font-medium leading-tight">Muhammed Ajas P</h1>
-            <p class="font-arabic text-xl text-[#8e6446] leading-relaxed">محمد أجاس</p>
-          </div>
-
-          <div class="font-script text-3xl text-[#a8785e] my-1">&amp;</div>
-
-          <div class="space-y-1">
-            <h1 class="font-serif italic text-4xl text-[#3a271d] font-medium leading-tight">Saniya Sabah</h1>
-            <p class="font-arabic text-xl text-[#8e6446] leading-relaxed">صانية صباح</p>
-          </div>
-        </div>
-
-        <!-- Details Box -->
-        <div class="w-full text-center space-y-4">
-          <p class="font-serif italic text-sm text-[#6f4e37] max-w-md mx-auto leading-relaxed">
-            Cordially invite you to celebrate the joyous occasion of our Nikah ceremony
-          </p>
-
-          <div class="border border-[#c49a82]/50 bg-white/70 py-4 px-6 rounded-xl mx-auto max-w-md">
-            <p class="font-serif italic text-lg font-semibold text-[#3a271d]">Saturday, 21 November 2026</p>
-            <p class="font-serif italic text-sm text-[#a8785e] mt-0.5">Nikah Ceremony • 7:00 PM</p>
-            <div class="h-[1px] w-20 bg-[#c49a82]/40 mx-auto my-3"></div>
-            <p class="font-serif italic text-base font-medium text-[#3a271d]">Punathil House</p>
-            <p class="font-serif italic text-xs text-[#8e6446]">Purameri, Kerala</p>
-          </div>
-
-          <!-- Blessing & Regards -->
-          <div class="pt-2 space-y-1">
-            <p class="font-arabic text-sm text-[#8e6446] leading-relaxed pb-1">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
-            <p class="font-serif italic text-xs tracking-widest text-[#a8785e] uppercase">With Best Compliments</p>
-            <p class="font-serif italic text-base text-[#6f4e37] font-semibold">Punathil Family</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Unified Audio Engine, Countdown, & Card Downloader -->
+  <!-- Unified Audio Engine, Countdown, & Direct-Canvas Downloader -->
   <script>
     const coverPage = document.getElementById("coverPage");
     const audio = document.getElementById("bgAudio");
@@ -495,7 +385,6 @@
     const mainIconPlay = document.getElementById("mainIconPlay");
     const mainIconPause = document.getElementById("mainIconPause");
 
-    // Function to render icon state matching audio playback
     function renderIcons(isPlaying) {
       if (isPlaying) {
         splashIconPlay.classList.remove("hidden");
@@ -510,7 +399,6 @@
       }
     }
 
-    // Direct event listener binding so buttons never desync
     audio.addEventListener("play", () => renderIcons(true));
     audio.addEventListener("playing", () => renderIcons(true));
     audio.addEventListener("pause", () => renderIcons(false));
@@ -548,7 +436,6 @@
       }
     }
 
-    // Direct click binding
     document.getElementById("splashMusicToggle").onclick = toggleAudio;
     document.getElementById("mainMusicToggle").onclick = toggleAudio;
 
@@ -574,9 +461,193 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Client-side Card Generation and Instant Download
+    // Helper: Rounded Rectangle generator for Canvas 2D
+    function drawRoundedRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    // Direct High-Resolution Canvas Card Generator (Zero Blank Page Risk)
+    async function generateCardCanvas() {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      
+      // High-resolution 1200 x 1800 printable card
+      const width = 1200;
+      const height = 1800;
+      canvas.width = width;
+      canvas.height = height;
+
+      // 1. Base Warm Background
+      const bgGrad = ctx.createRadialGradient(width / 2, height / 2, 50, width / 2, height / 2, width * 0.75);
+      bgGrad.addColorStop(0, "#ffffff");
+      bgGrad.addColorStop(1, "#f7f1e7");
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      // 2. Outer Border
+      ctx.strokeStyle = "#c49a82";
+      ctx.lineWidth = 4;
+      ctx.strokeRect(50, 50, width - 100, height - 100);
+
+      // 3. Inner Decorative Border
+      ctx.strokeStyle = "rgba(196, 154, 130, 0.45)";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(66, 66, width - 132, height - 132);
+
+      // Corner Accents
+      const drawCorner = (cx, cy) => {
+        ctx.fillStyle = "#a8785e";
+        ctx.beginPath();
+        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+        ctx.fill();
+      };
+      drawCorner(66, 66);
+      drawCorner(width - 66, 66);
+      drawCorner(66, height - 66);
+      drawCorner(width - 66, height - 66);
+
+      ctx.textAlign = "center";
+
+      // 4. Bismillah (Arabic)
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = '54px "Amiri", serif';
+      ctx.fillText("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", width / 2, 190);
+
+      // Divider below Bismillah
+      ctx.strokeStyle = "rgba(196, 154, 130, 0.6)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(width / 2 - 120, 240);
+      ctx.lineTo(width / 2 + 120, 240);
+      ctx.stroke();
+
+      ctx.fillStyle = "#c49a82";
+      ctx.font = '22px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText("✦", width / 2, 246);
+
+      // 5. Title & Invitation Notice
+      ctx.fillStyle = "#a8785e";
+      ctx.font = 'italic 600 24px "Playfair Display", serif';
+      ctx.letterSpacing = "6px";
+      ctx.fillText("WEDDING INVITATION", width / 2, 310);
+      ctx.letterSpacing = "0px";
+
+      ctx.fillStyle = "#8e6446";
+      ctx.font = 'italic 400 28px "Playfair Display", serif';
+      ctx.fillText("Together with our beloved families", width / 2, 370);
+
+      // 6. Monogram (A & S)
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = 'italic 400 130px "Playfair Display", serif';
+      ctx.fillText("A", width / 2 - 90, 540);
+
+      ctx.fillStyle = "#c49a82";
+      ctx.font = '110px "Great Vibes", cursive';
+      ctx.fillText("&", width / 2, 540);
+
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = 'italic 400 130px "Playfair Display", serif';
+      ctx.fillText("S", width / 2 + 90, 540);
+
+      // 7. Groom Name
+      ctx.fillStyle = "#3a271d";
+      ctx.font = 'italic 500 64px "Playfair Display", serif';
+      ctx.fillText("Muhammed Ajas", width / 2, 670);
+
+      ctx.fillStyle = "#8e6446";
+      ctx.font = '40px "Amiri", serif';
+      ctx.fillText("محمد أجاس", width / 2, 735);
+
+      // Ampersand between Names
+      ctx.fillStyle = "#a8785e";
+      ctx.font = '60px "Great Vibes", cursive';
+      ctx.fillText("&", width / 2, 815);
+
+      // 8. Bride Name (Sanīya with Sīn)
+      ctx.fillStyle = "#3a271d";
+      ctx.font = 'italic 500 64px "Playfair Display", serif';
+      ctx.fillText("Saniya Sabah", width / 2, 900);
+
+      ctx.fillStyle = "#8e6446";
+      ctx.font = '40px "Amiri", serif';
+      ctx.fillText("سانية صباح", width / 2, 965);
+
+      // 9. Invitation Text
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = 'italic 400 28px "Playfair Display", serif';
+      ctx.fillText("Cordially invite you to celebrate the joyous occasion", width / 2, 1070);
+      ctx.fillText("of our Nikah ceremony", width / 2, 1115);
+
+      // 10. Event Details Card Box
+      const boxW = 860;
+      const boxH = 260;
+      const boxX = (width - boxW) / 2;
+      const boxY = 1170;
+
+      ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
+      drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 20);
+      ctx.fill();
+
+      ctx.strokeStyle = "rgba(196, 154, 130, 0.45)";
+      ctx.lineWidth = 2;
+      drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 20);
+      ctx.stroke();
+
+      // Card Content
+      ctx.fillStyle = "#3a271d";
+      ctx.font = 'italic 600 36px "Playfair Display", serif';
+      ctx.fillText("Saturday, 21 November 2026", width / 2, 1240);
+
+      ctx.fillStyle = "#a8785e";
+      ctx.font = 'italic 500 28px "Playfair Display", serif';
+      ctx.fillText("Nikah Ceremony • 7:00 PM", width / 2, 1290);
+
+      // Box Divider
+      ctx.strokeStyle = "rgba(196, 154, 130, 0.4)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(width / 2 - 100, 1330);
+      ctx.lineTo(width / 2 + 100, 1330);
+      ctx.stroke();
+
+      ctx.fillStyle = "#3a271d";
+      ctx.font = 'italic 600 32px "Playfair Display", serif';
+      ctx.fillText("Punathil House", width / 2, 1375);
+
+      ctx.fillStyle = "#8e6446";
+      ctx.font = 'italic 400 24px "Playfair Display", serif';
+      ctx.fillText("Purameri, Kerala", width / 2, 1410);
+
+      // 11. Blessings & Regards
+      ctx.fillStyle = "#8e6446";
+      ctx.font = '32px "Amiri", serif';
+      ctx.fillText("بارك الله لكما وبارك عليكما وجمع بينكما في خير", width / 2, 1530);
+
+      ctx.fillStyle = "#a8785e";
+      ctx.font = 'italic 600 20px "Playfair Display", serif';
+      ctx.letterSpacing = "4px";
+      ctx.fillText("WITH BEST COMPLIMENTS", width / 2, 1610);
+      ctx.letterSpacing = "0px";
+
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = 'italic 600 34px "Playfair Display", serif';
+      ctx.fillText("Punathil Family", width / 2, 1665);
+
+      return canvas;
+    }
+
+    // Direct Browser Download & Mobile Share
     async function downloadInvitationCard() {
-      const cardContainer = document.getElementById("printableCardContainer");
       const btnText = document.getElementById("dlBtnText");
       const btnSubtext = document.getElementById("dlBtnSubtext");
       const iconNormal = document.getElementById("dlIconNormal");
@@ -590,27 +661,50 @@
         iconNormal.classList.add("hidden");
         iconSpinner.classList.remove("hidden");
 
-        // Wait briefly to ensure any lazy layout settles
+        // Wait for all custom fonts (Amiri, Playfair, Great Vibes) to be ready
         await document.fonts.ready;
 
-        // Render card offscreen container to canvas with 2x retina clarity
-        const canvas = await html2canvas(cardContainer, {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: "#faf5ee"
-        });
+        // Render card onto in-memory Canvas
+        const canvas = await generateCardCanvas();
 
-        const image = canvas.toDataURL("image/png");
+        const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png", 1.0));
+        const filename = "Wedding-Invitation-Muhammed-Ajas-and-Saniya-Sabah.png";
+        const file = new File([blob], filename, { type: "image/png" });
+
+        // Accurate device check for mobile touchscreens
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                         (navigator.maxTouchPoints > 1 && window.innerWidth <= 1024);
+
+        // Mobile: Web Share API opens the native sheet ("Save Image" to Camera Roll / Photos)
+        if (isMobile && navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: "Wedding Invitation",
+              text: "Muhammed Ajas & Saniya Sabah Wedding Invitation"
+            });
+            return;
+          } catch (shareErr) {
+            if (shareErr.name === "AbortError") return;
+          }
+        }
+
+        // Laptops/Desktops: Standard direct file download
+        const blobUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
-        link.href = image;
-        link.download = "Wedding-Invitation-Muhammed-Ajas-and-Saniya-Sabah.png";
+        link.href = blobUrl;
+        link.download = filename;
         document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);
+        
+        setTimeout(() => {
+          document.body.removeChild(link);
+          URL.revokeObjectURL(blobUrl);
+        }, 500);
 
       } catch (error) {
         console.error("Card generation failed:", error);
-        alert("Could not generate card at this time. Please try again.");
+        alert("Could not complete download. Please try again.");
       } finally {
         btn.disabled = false;
         btnText.textContent = "Download Card";
