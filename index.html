@@ -12,6 +12,9 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- html2canvas for instant, client-side downloadable single-page card -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -72,6 +75,39 @@
       opacity: 0;
       pointer-events: none;
     }
+
+    /* Off-screen Downloadable Card Template */
+    #printableCardContainer {
+      position: fixed;
+      left: -9999px;
+      top: 0;
+      width: 700px;
+      height: 1020px;
+      background: #faf5ee;
+      padding: 30px;
+      z-index: -100;
+      box-sizing: border-box;
+    }
+
+    .card-border-outer {
+      border: 2px solid #c49a82;
+      height: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .card-border-inner {
+      border: 1px solid rgba(196, 154, 130, 0.5);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 44px 32px;
+      box-sizing: border-box;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #faf4ed 100%);
+    }
   </style>
 </head>
 <body class="font-sans antialiased relative selection:bg-desert-dustyRose selection:text-white">
@@ -92,11 +128,11 @@
     
     <!-- Top Header -->
     <div class="text-center pt-6 space-y-1">
-      <p class="font-arabic text-2xl rose-gradient-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <p class="font-arabic text-2xl rose-gradient-text leading-relaxed">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
       <p class="font-serif italic text-xs tracking-[0.35em] text-desert-dustyRose uppercase">Wedding Invitation</p>
     </div>
 
-    <!-- Center Monogram: Clean, Frameless, Pure Typography -->
+    <!-- Center Monogram -->
     <div class="flex flex-col items-center cursor-pointer group" onclick="openInvitation()">
       <div class="relative flex items-center justify-center select-none py-6">
         <span class="font-serif italic text-7xl sm:text-8xl md:text-9xl font-normal tracking-tight -mr-2 rose-gradient-text">A</span>
@@ -322,19 +358,43 @@
     </div>
   </section>
 
-  <!-- Venue Directions Link -->
-  <section class="pb-16 px-4 max-w-sm mx-auto">
-    <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="cashmere-card hover:bg-white p-4 rounded-xl flex items-center justify-center space-x-3 transition-colors shadow-sm text-center">
-      <div class="p-2.5 rounded-lg bg-desert-rose/15 text-desert-oud">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-        </svg>
-      </div>
-      <div class="text-left">
-        <p class="font-serif italic text-sm font-semibold text-desert-deepText">Venue Directions</p>
-        <p class="font-serif italic text-xs text-desert-dustyRose">Punathil House, Purameri</p>
-      </div>
-    </a>
+  <!-- ==================================================== -->
+  <!-- ACTION BUTTONS: VENUE DIRECTIONS & DOWNLOAD CARD     -->
+  <!-- ==================================================== -->
+  <section class="pb-16 px-4 max-w-xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <!-- Venue Directions Link -->
+      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="cashmere-card hover:bg-white p-4 rounded-xl flex items-center justify-center space-x-3 transition-all shadow-sm text-center">
+        <div class="p-2.5 rounded-lg bg-desert-rose/15 text-desert-oud shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+          </svg>
+        </div>
+        <div class="text-left">
+          <p class="font-serif italic text-sm font-semibold text-desert-deepText">Venue Directions</p>
+          <p class="font-serif italic text-xs text-desert-dustyRose">Punathil House, Purameri</p>
+        </div>
+      </a>
+
+      <!-- Download Invitation Card Button -->
+      <button id="downloadCardBtn" onclick="downloadInvitationCard()" type="button" class="cashmere-card hover:bg-white p-4 rounded-xl flex items-center justify-center space-x-3 transition-all shadow-sm text-center cursor-pointer">
+        <div class="p-2.5 rounded-lg bg-desert-rose/15 text-desert-oud shrink-0">
+          <svg id="dlIconNormal" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          <svg id="dlIconSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+        <div class="text-left">
+          <p id="dlBtnText" class="font-serif italic text-sm font-semibold text-desert-deepText">Download Card</p>
+          <p id="dlBtnSubtext" class="font-serif italic text-xs text-desert-dustyRose">Save Invitation Card</p>
+        </div>
+      </button>
+
+    </div>
   </section>
 
   <!-- Footer -->
@@ -343,7 +403,80 @@
     <p class="font-serif italic text-xl rose-gradient-text font-medium">Punathil Family</p>
   </footer>
 
-  <!-- Unified Audio Engine & UI Controller -->
+  <!-- ==================================================== -->
+  <!-- 3. OFF-SCREEN SINGLE PAGE WEDDING CARD TEMPLATE      -->
+  <!-- ==================================================== -->
+  <div id="printableCardContainer">
+    <div class="card-border-outer">
+      <div class="card-border-inner">
+        
+        <!-- Header with generous spacing for Bismillah & Title -->
+        <div class="text-center w-full flex flex-col items-center">
+          <p class="font-arabic text-3xl text-[#6f4e37] leading-[2.2] pb-2 tracking-normal">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </p>
+
+          <!-- Divider between Arabic & English title to prevent overlap -->
+          <div class="flex items-center justify-center space-x-2 my-2 w-full">
+            <span class="h-[1px] w-12 bg-[#c49a82]/50"></span>
+            <span class="text-[10px] text-[#c49a82]">✦</span>
+            <span class="h-[1px] w-12 bg-[#c49a82]/50"></span>
+          </div>
+
+          <p class="font-serif italic text-xs uppercase tracking-[0.38em] text-[#a8785e] pt-1">
+            Wedding Invitation
+          </p>
+          <p class="font-serif italic text-sm text-[#8e6446] pt-3">
+            Together with our beloved families
+          </p>
+        </div>
+
+        <!-- Monogram & Names -->
+        <div class="text-center space-y-3 my-auto">
+          <div class="font-serif italic text-6xl text-[#6f4e37] tracking-wider mb-2">
+            A <span class="font-script text-5xl text-[#c49a82]">&amp;</span> S
+          </div>
+
+          <div class="space-y-1">
+            <h1 class="font-serif italic text-4xl text-[#3a271d] font-medium leading-tight">Muhammed Ajas P</h1>
+            <p class="font-arabic text-xl text-[#8e6446] leading-relaxed">محمد أجاس</p>
+          </div>
+
+          <div class="font-script text-3xl text-[#a8785e] my-1">&amp;</div>
+
+          <div class="space-y-1">
+            <h1 class="font-serif italic text-4xl text-[#3a271d] font-medium leading-tight">Saniya Sabah</h1>
+            <p class="font-arabic text-xl text-[#8e6446] leading-relaxed">صانية صباح</p>
+          </div>
+        </div>
+
+        <!-- Details Box -->
+        <div class="w-full text-center space-y-4">
+          <p class="font-serif italic text-sm text-[#6f4e37] max-w-md mx-auto leading-relaxed">
+            Cordially invite you to celebrate the joyous occasion of our Nikah ceremony
+          </p>
+
+          <div class="border border-[#c49a82]/50 bg-white/70 py-4 px-6 rounded-xl mx-auto max-w-md">
+            <p class="font-serif italic text-lg font-semibold text-[#3a271d]">Saturday, 21 November 2026</p>
+            <p class="font-serif italic text-sm text-[#a8785e] mt-0.5">Nikah Ceremony • 7:00 PM</p>
+            <div class="h-[1px] w-20 bg-[#c49a82]/40 mx-auto my-3"></div>
+            <p class="font-serif italic text-base font-medium text-[#3a271d]">Punathil House</p>
+            <p class="font-serif italic text-xs text-[#8e6446]">Purameri, Kerala</p>
+          </div>
+
+          <!-- Blessing & Regards -->
+          <div class="pt-2 space-y-1">
+            <p class="font-arabic text-sm text-[#8e6446] leading-relaxed pb-1">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+            <p class="font-serif italic text-xs tracking-widest text-[#a8785e] uppercase">With Best Compliments</p>
+            <p class="font-serif italic text-base text-[#6f4e37] font-semibold">Punathil Family</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Audio Engine, Countdown, & Card Downloader -->
   <script>
     const coverPage = document.getElementById("coverPage");
     const audio = document.getElementById("bgAudio");
@@ -440,6 +573,52 @@
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    // Client-side Card Generation and Instant Download
+    async function downloadInvitationCard() {
+      const cardContainer = document.getElementById("printableCardContainer");
+      const btnText = document.getElementById("dlBtnText");
+      const btnSubtext = document.getElementById("dlBtnSubtext");
+      const iconNormal = document.getElementById("dlIconNormal");
+      const iconSpinner = document.getElementById("dlIconSpinner");
+      const btn = document.getElementById("downloadCardBtn");
+
+      try {
+        btn.disabled = true;
+        btnText.textContent = "Generating...";
+        btnSubtext.textContent = "Please wait";
+        iconNormal.classList.add("hidden");
+        iconSpinner.classList.remove("hidden");
+
+        // Wait briefly to ensure any lazy layout settles
+        await document.fonts.ready;
+
+        // Render card offscreen container to canvas with 2x retina clarity
+        const canvas = await html2canvas(cardContainer, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#faf5ee"
+        });
+
+        const image = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "Wedding-Invitation-Muhammed-Ajas-and-Saniya-Sabah.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+      } catch (error) {
+        console.error("Card generation failed:", error);
+        alert("Could not generate card at this time. Please try again.");
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = "Download Card";
+        btnSubtext.textContent = "Save Invitation Card";
+        iconNormal.classList.remove("hidden");
+        iconSpinner.classList.add("hidden");
+      }
+    }
   </script>
 </body>
 </html>
