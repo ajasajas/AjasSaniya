@@ -176,33 +176,43 @@
         Together with our beloved families
       </p>
 
-      <!-- Couple Names -->
+      <!-- Couple Names & Parents -->
       <div class="space-y-3 py-4">
-        <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
-          Muhammed Ajas
-        </h1>
-        <p class="font-arabic text-2xl rose-gradient-text">محمد أجاس</p>
+        <div>
+          <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
+            Muhammed Ajas
+          </h1>
+          <p class="font-arabic text-2xl rose-gradient-text">محمد أجاس</p>
+          <p class="font-serif italic text-xs sm:text-sm text-desert-oud/80 mt-1">
+            Son of Mr. Abdul Azeez &amp; Mrs. Sufaira
+          </p>
+        </div>
         
-        <div class="flex items-center justify-center space-x-4">
+        <div class="flex items-center justify-center space-x-4 py-2">
           <span class="h-[1px] w-12 bg-desert-rose/40"></span>
           <span class="font-script text-3xl text-desert-rose">&amp;</span>
           <span class="h-[1px] w-12 bg-desert-rose/40"></span>
         </div>
 
-        <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
-          Saniya Sabah
-        </h1>
-        <p class="font-arabic text-2xl rose-gradient-text">سانية صباح</p>
+        <div>
+          <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
+            Saniya Sabah
+          </h1>
+          <p class="font-arabic text-2xl rose-gradient-text">سانية صباح</p>
+          <p class="font-serif italic text-xs sm:text-sm text-desert-oud/80 mt-1">
+            Daughter of Mr. Sabah &amp; Mrs. Faseema
+          </p>
+        </div>
       </div>
 
       <p class="font-serif italic text-desert-oud text-base md:text-lg max-w-md mx-auto leading-relaxed">
         Request the pleasure of your presence to celebrate our marriage ceremony.
       </p>
 
-      <!-- Date Badge -->
+      <!-- Date Badge (Updated to 4:30 PM) -->
       <div class="inline-block cashmere-card px-7 py-2.5 rounded-full mt-4">
         <p class="font-serif italic text-sm text-desert-deepText tracking-wider">
-          Saturday, 21 November 2026 • 7:00 PM
+          Saturday, 21 November 2026 • 4:30 PM
         </p>
       </div>
 
@@ -259,13 +269,13 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Ceremony Card -->
+      <!-- Ceremony Card (Updated to 4:30 PM) -->
       <div class="cashmere-card rounded-2xl p-8 text-center space-y-3">
         <p class="font-arabic text-xl rose-gradient-text">عقد النكاح</p>
         <h3 class="font-serif italic text-2xl text-desert-deepText">Nikah Ceremony</h3>
         <p class="font-serif italic text-sm text-desert-oud">Saturday, 21 November 2026</p>
         <div class="inline-block border border-desert-rose/40 bg-white/80 text-desert-deepText font-serif italic text-xs font-semibold px-5 py-1.5 rounded-full shadow-inner">
-          7:00 PM
+          4:30 PM
         </div>
       </div>
 
@@ -439,8 +449,8 @@
     document.getElementById("splashMusicToggle").onclick = toggleAudio;
     document.getElementById("mainMusicToggle").onclick = toggleAudio;
 
-    // Live Countdown targeting 7:00 PM IST on 21 Nov 2026
-    const targetDate = new Date("2026-11-21T19:00:00+05:30").getTime();
+    // Live Countdown targeting 4:30 PM IST on 21 Nov 2026
+    const targetDate = new Date("2026-11-21T16:30:00+05:30").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -476,14 +486,14 @@
       ctx.closePath();
     }
 
-    // Direct High-Resolution Canvas Card Generator (Zero Blank Page Risk)
+    // Direct High-Resolution Canvas Card Generator with Parents Details & Updated 4:30 PM Time
     async function generateCardCanvas() {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       
-      // High-resolution 1200 x 1800 printable card
+      // High-resolution 1200 x 1850 printable card
       const width = 1200;
-      const height = 1800;
+      const height = 1850;
       canvas.width = width;
       canvas.height = height;
 
@@ -520,79 +530,87 @@
 
       // 4. Bismillah (Arabic)
       ctx.fillStyle = "#6f4e37";
-      ctx.font = '54px "Amiri", serif';
-      ctx.fillText("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", width / 2, 190);
+      ctx.font = '52px "Amiri", serif';
+      ctx.fillText("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", width / 2, 175);
 
       // Divider below Bismillah
       ctx.strokeStyle = "rgba(196, 154, 130, 0.6)";
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.moveTo(width / 2 - 120, 240);
-      ctx.lineTo(width / 2 + 120, 240);
+      ctx.moveTo(width / 2 - 120, 220);
+      ctx.lineTo(width / 2 + 120, 220);
       ctx.stroke();
 
       ctx.fillStyle = "#c49a82";
       ctx.font = '22px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText("✦", width / 2, 246);
+      ctx.fillText("✦", width / 2, 226);
 
       // 5. Title & Invitation Notice
       ctx.fillStyle = "#a8785e";
-      ctx.font = 'italic 600 24px "Playfair Display", serif';
+      ctx.font = 'italic 600 22px "Playfair Display", serif';
       ctx.letterSpacing = "6px";
-      ctx.fillText("WEDDING INVITATION", width / 2, 310);
+      ctx.fillText("WEDDING INVITATION", width / 2, 280);
       ctx.letterSpacing = "0px";
 
       ctx.fillStyle = "#8e6446";
-      ctx.font = 'italic 400 28px "Playfair Display", serif';
-      ctx.fillText("Together with our beloved families", width / 2, 370);
+      ctx.font = 'italic 400 26px "Playfair Display", serif';
+      ctx.fillText("Together with our beloved families", width / 2, 335);
 
       // 6. Monogram (A & S)
       ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 130px "Playfair Display", serif';
-      ctx.fillText("A", width / 2 - 90, 540);
+      ctx.font = 'italic 400 115px "Playfair Display", serif';
+      ctx.fillText("A", width / 2 - 80, 485);
 
       ctx.fillStyle = "#c49a82";
-      ctx.font = '110px "Great Vibes", cursive';
-      ctx.fillText("&", width / 2, 540);
+      ctx.font = '100px "Great Vibes", cursive';
+      ctx.fillText("&", width / 2, 485);
 
       ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 130px "Playfair Display", serif';
-      ctx.fillText("S", width / 2 + 90, 540);
+      ctx.font = 'italic 400 115px "Playfair Display", serif';
+      ctx.fillText("S", width / 2 + 80, 485);
 
-      // 7. Groom Name
+      // 7. Groom Name & Parents
       ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 500 64px "Playfair Display", serif';
-      ctx.fillText("Muhammed Ajas", width / 2, 670);
+      ctx.font = 'italic 500 58px "Playfair Display", serif';
+      ctx.fillText("Muhammed Ajas", width / 2, 605);
 
       ctx.fillStyle = "#8e6446";
-      ctx.font = '40px "Amiri", serif';
-      ctx.fillText("محمد أجاس", width / 2, 735);
+      ctx.font = '36px "Amiri", serif';
+      ctx.fillText("محمد أجاس", width / 2, 660);
+
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = 'italic 400 23px "Playfair Display", serif';
+      ctx.fillText("Son of Mr. Abdul Azeez & Mrs. Sufaira", width / 2, 705);
 
       // Ampersand between Names
       ctx.fillStyle = "#a8785e";
-      ctx.font = '60px "Great Vibes", cursive';
-      ctx.fillText("&", width / 2, 815);
+      ctx.font = '52px "Great Vibes", cursive';
+      ctx.fillText("&", width / 2, 775);
 
-      // 8. Bride Name (Sanīya with Sīn)
+      // 8. Bride Name & Parents
       ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 500 64px "Playfair Display", serif';
-      ctx.fillText("Saniya Sabah", width / 2, 900);
+      ctx.font = 'italic 500 58px "Playfair Display", serif';
+      ctx.fillText("Saniya Sabah", width / 2, 850);
 
       ctx.fillStyle = "#8e6446";
-      ctx.font = '40px "Amiri", serif';
-      ctx.fillText("سانية صباح", width / 2, 965);
+      ctx.font = '36px "Amiri", serif';
+      ctx.fillText("سانية صباح", width / 2, 905);
+
+      ctx.fillStyle = "#6f4e37";
+      ctx.font = 'italic 400 23px "Playfair Display", serif';
+      ctx.fillText("Daughter of Mr. Sabah & Mrs. Faseema", width / 2, 950);
 
       // 9. Invitation Text
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 28px "Playfair Display", serif';
-      ctx.fillText("Cordially invite you to celebrate the joyous occasion", width / 2, 1070);
-      ctx.fillText("of our Nikah ceremony", width / 2, 1115);
+      ctx.fillStyle = "#8e6446";
+      ctx.font = 'italic 400 26px "Playfair Display", serif';
+      ctx.fillText("Cordially invite you to celebrate the joyous occasion", width / 2, 1050);
+      ctx.fillText("of our Nikah ceremony", width / 2, 1090);
 
       // 10. Event Details Card Box
       const boxW = 860;
-      const boxH = 260;
+      const boxH = 250;
       const boxX = (width - boxW) / 2;
-      const boxY = 1170;
+      const boxY = 1145;
 
       ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
       drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 20);
@@ -603,45 +621,45 @@
       drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 20);
       ctx.stroke();
 
-      // Card Content
+      // Card Content (Updated to 4:30 PM)
       ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 600 36px "Playfair Display", serif';
-      ctx.fillText("Saturday, 21 November 2026", width / 2, 1240);
+      ctx.font = 'italic 600 34px "Playfair Display", serif';
+      ctx.fillText("Saturday, 21 November 2026", width / 2, 1210);
 
       ctx.fillStyle = "#a8785e";
-      ctx.font = 'italic 500 28px "Playfair Display", serif';
-      ctx.fillText("Nikah Ceremony • 7:00 PM", width / 2, 1290);
+      ctx.font = 'italic 500 26px "Playfair Display", serif';
+      ctx.fillText("Nikah Ceremony • 4:30 PM", width / 2, 1255);
 
       // Box Divider
       ctx.strokeStyle = "rgba(196, 154, 130, 0.4)";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(width / 2 - 100, 1330);
-      ctx.lineTo(width / 2 + 100, 1330);
+      ctx.moveTo(width / 2 - 100, 1290);
+      ctx.lineTo(width / 2 + 100, 1290);
       ctx.stroke();
 
       ctx.fillStyle = "#3a271d";
       ctx.font = 'italic 600 32px "Playfair Display", serif';
-      ctx.fillText("Punathil House", width / 2, 1375);
+      ctx.fillText("Punathil House", width / 2, 1335);
 
       ctx.fillStyle = "#8e6446";
-      ctx.font = 'italic 400 24px "Playfair Display", serif';
-      ctx.fillText("Purameri, Kerala", width / 2, 1410);
+      ctx.font = 'italic 400 23px "Playfair Display", serif';
+      ctx.fillText("Purameri, Kerala", width / 2, 1368);
 
       // 11. Blessings & Regards
       ctx.fillStyle = "#8e6446";
       ctx.font = '32px "Amiri", serif';
-      ctx.fillText("بارك الله لكما وبارك عليكما وجمع بينكما في خير", width / 2, 1530);
+      ctx.fillText("بارك الله لكما وبارك عليكما وجمع بينكما في خير", width / 2, 1490);
 
       ctx.fillStyle = "#a8785e";
       ctx.font = 'italic 600 20px "Playfair Display", serif';
       ctx.letterSpacing = "4px";
-      ctx.fillText("WITH BEST COMPLIMENTS", width / 2, 1610);
+      ctx.fillText("WITH BEST COMPLIMENTS", width / 2, 1575);
       ctx.letterSpacing = "0px";
 
       ctx.fillStyle = "#6f4e37";
       ctx.font = 'italic 600 34px "Playfair Display", serif';
-      ctx.fillText("Punathil Family", width / 2, 1665);
+      ctx.fillText("Punathil Family", width / 2, 1630);
 
       return canvas;
     }
