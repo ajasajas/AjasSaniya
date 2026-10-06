@@ -2,191 +2,152 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding Invitation | Muhammed Ajas & Saniya Sabah</title>
-
-  <!-- Google Fonts -->
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amiri:ital,wght@0,400;1,400&family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            noir: {
-              950: '#060807',
-              900: '#0a0d0c',
-              850: '#111614',
-              800: '#171e1b'
-            },
-            gold: {
-              100: '#fff6dd',
-              200: '#faeed1',
-              300: '#ebd9a0',
-              400: '#dfba73',
-              500: '#c59b4c',
-              600: '#9d752f'
-            }
-          },
-          fontFamily: {
-            cinzel: ['"Cinzel"', 'serif'],
-            script: ['"Alex Brush"', 'cursive'],
-            playfair: ['"Playfair Display"', 'serif'],
-            arabic: ['"Amiri"', 'serif'],
-            sans: ['"Montserrat"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
-    /* Premium Obsidian & Warm Golden Slate Ambient */
+    :root {
+      --bg-dark: #070908;
+      --gold-primary: #dfba73;
+      --gold-light: #faeed1;
+      --gold-dark: #a47d34;
+      --card-bg: rgba(14, 18, 16, 0.72);
+      --card-border: rgba(223, 186, 115, 0.22);
+    }
+
     body {
-      background-color: #060807;
+      background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(42, 53, 47, 0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 90% 50%, rgba(35, 45, 40, 0.35) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 10% 85%, rgba(28, 36, 32, 0.4) 0%, transparent 60%);
+        radial-gradient(ellipse at 50% 0%, rgba(35, 45, 40, 0.45) 0%, transparent 65%),
+        radial-gradient(ellipse at 85% 50%, rgba(28, 35, 31, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 15% 85%, rgba(24, 30, 27, 0.45) 0%, transparent 60%);
       color: #ebd9a0;
-      font-family: 'Montserrat', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    /* Metallic Gold Shimmer */
-    .gold-foil-text {
-      background: linear-gradient(135deg, #fff7dc 0%, #dfba73 35%, #ffd988 55%, #c59b4c 80%, #9a732d 100%);
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-script { font-family: 'Alex Brush', cursive; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+
+    /* Elegant Metallic Foil Shimmer */
+    .gold-foil {
+      background: linear-gradient(135deg, #fff9e6 0%, #e2bf7b 30%, #ffd88a 55%, #b68b3a 85%, #8c6722 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 10px rgba(223, 186, 115, 0.22));
+      filter: drop-shadow(0 1px 4px rgba(223, 186, 115, 0.25));
     }
 
-    /* Spacious Glass Cards */
-    .luxe-card {
-      background: linear-gradient(180deg, rgba(17, 22, 20, 0.82) 0%, rgba(10, 13, 12, 0.9) 100%);
-      border: 1px solid rgba(223, 186, 115, 0.32);
-      box-shadow: 
-        0 20px 50px -10px rgba(0, 0, 0, 0.8),
-        0 0 35px -5px rgba(223, 186, 115, 0.08);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    .gold-sub-foil {
+      background: linear-gradient(135deg, #faeed1 0%, #dfba73 50%, #af8638 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Screen Slide-Up Animation */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 20px -2px rgba(223, 186, 115, 0.04);
+    }
+
+    /* Screen Slide-Up */
     #coverPage {
-      transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease-in-out;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.85s ease-in-out;
     }
     #coverPage.opened {
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
     }
-
-    /* Botanical Corner Glow */
-    .botanical-stroke {
-      stroke: #dfba73;
-      stroke-width: 1.2;
-      fill: none;
-      opacity: 0.35;
-    }
   </style>
 </head>
-<body class="antialiased relative selection:bg-gold-400 selection:text-black">
+<body class="antialiased relative selection:bg-[#dfba73] selection:text-black">
 
-  <!-- Ambient Shimmer Spheres -->
-  <div class="fixed top-[-10%] left-[5%] w-[550px] h-[550px] rounded-full bg-gold-400/8 blur-[160px] pointer-events-none -z-10"></div>
-  <div class="fixed bottom-[-15%] right-[5%] w-[600px] h-[600px] rounded-full bg-[#dfba73]/10 blur-[180px] pointer-events-none -z-10"></div>
-
-  <!-- Audio Element with Humnava local audio & reliable streaming fallbacks -->
+  <!-- Audio Element with local and fallback sources -->
   <audio id="bgAudio" loop preload="auto" playsinline>
     <source src="humnava.mp3" type="audio/mpeg">
     <source src="wedding-song.mp3" type="audio/mpeg">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-114281.mp3" type="audio/mpeg">
     <source src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Canon_in_D_Major.ogg" type="audio/ogg">
   </audio>
 
-  <!-- Floating Audio Controls (Always accessible across all sections) -->
-  <button id="floatingMusicToggle" type="button" class="fixed bottom-6 right-6 z-40 bg-noir-850/90 border border-gold-400/60 text-gold-400 p-3.5 rounded-full shadow-[0_6px_28px_rgba(0,0,0,0.85)] hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center justify-center group" aria-label="Toggle audio">
-    <svg id="musicIconPlay" class="w-5 h-5 hidden text-gold-200 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-    <svg id="musicIconPause" class="w-5 h-5 block text-gold-400 pointer-events-none animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-  </button>
-
   <!-- ==================================================== -->
-  <!-- 1. FULL-SCREEN COVER / SPLASH MONOGRAM PAGE          -->
+  <!-- 1. FULLSCREEN COVER / SPLASH SCREEN                 -->
   <!-- ==================================================== -->
-  <div id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between px-6 py-12 select-none overflow-hidden bg-noir-950">
+  <div id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between bg-[#070908] px-6 py-10 select-none overflow-hidden">
     
-    <!-- Top Ornamental Motif -->
-    <div class="w-full max-w-sm flex items-center justify-between opacity-40 pt-4">
-      <svg class="w-12 h-12" viewBox="0 0 100 100">
-        <path class="botanical-stroke" d="M10 90 Q 40 70 50 40 Q 60 70 90 90 M50 40 Q 30 20 50 10 Q 70 20 50 40" />
+    <!-- Top Decorative Line & Branch Silhouette -->
+    <div class="w-full max-w-sm flex items-center justify-between opacity-30 pt-2">
+      <svg class="w-10 h-10 text-[#dfba73]" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 100 100">
+        <path d="M10 90 Q 40 70 50 40 Q 60 70 90 90 M50 40 Q 30 20 50 10 Q 70 20 50 40" />
       </svg>
-      <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold-400/50 to-transparent mx-4"></div>
-      <svg class="w-12 h-12 transform -scale-x-100" viewBox="0 0 100 100">
-        <path class="botanical-stroke" d="M10 90 Q 40 70 50 40 Q 60 70 90 90 M50 40 Q 30 20 50 10 Q 70 20 50 40" />
+      <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#dfba73]/40 to-transparent mx-3"></div>
+      <svg class="w-10 h-10 text-[#dfba73] transform -scale-x-100" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 100 100">
+        <path d="M10 90 Q 40 70 50 40 Q 60 70 90 90 M50 40 Q 30 20 50 10 Q 70 20 50 40" />
       </svg>
     </div>
 
-    <!-- Center Monogram Emblem -->
-    <div class="flex flex-col items-center cursor-pointer group my-auto text-center px-4" onclick="openInvitation()">
-      <p class="font-cinzel text-xs sm:text-sm tracking-[0.35em] text-gold-400/90 uppercase mb-8 group-hover:text-gold-100 transition-colors">
+    <!-- Center Monogram Crest -->
+    <div class="flex flex-col items-center cursor-pointer group my-auto" onclick="openInvitation()">
+      <p class="font-cinzel text-[10px] tracking-[0.35em] text-[#dfba73]/75 uppercase mb-6 group-hover:text-[#faeed1] transition-colors">
         The Wedding Of
       </p>
 
-      <!-- Exact Circular Crest from Physical Card with Laurel Branch -->
-      <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border-2 border-gold-400/80 flex items-center justify-center p-3 group-hover:scale-105 group-hover:border-gold-100 transition-all duration-700 shadow-[0_0_60px_rgba(223,186,115,0.2)] bg-black/60">
-        
-        <div class="w-full h-full rounded-full border border-gold-400/40 flex items-center justify-center relative">
+      <!-- Circular Badge -->
+      <div class="relative w-52 h-52 sm:w-60 sm:h-60 rounded-full border border-[#dfba73]/70 flex items-center justify-center p-2.5 group-hover:scale-105 group-hover:border-[#faeed1] transition-all duration-500 shadow-[0_0_40px_rgba(223,186,115,0.12)] bg-black/40">
+        <div class="w-full h-full rounded-full border border-[#dfba73]/40 flex items-center justify-center relative">
           
-          <!-- Interlocking Monogram Initials -->
-          <div class="flex items-center justify-center select-none pt-1">
-            <span class="font-playfair italic text-8xl sm:text-9xl text-gold-200 -mr-3 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">A</span>
-            <span class="font-playfair italic text-8xl sm:text-9xl text-gold-400 -ml-2 mt-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">S</span>
+          <!-- Interlocking A & S -->
+          <div class="flex items-center justify-center select-none -mt-1">
+            <span class="font-playfair italic text-6xl sm:text-7xl text-[#faeed1] -mr-2 drop-shadow">A</span>
+            <span class="font-playfair italic text-6xl sm:text-7xl text-[#dfba73] -ml-1 mt-4 drop-shadow">S</span>
           </div>
 
-          <!-- Laurel / Olive Leaf Branch on right border -->
-          <svg class="absolute -right-3.5 top-6 sm:top-8 w-14 sm:w-16 h-32 sm:h-36 text-gold-400" viewBox="0 0 50 100" fill="currentColor">
-            <path d="M14,95 Q18,60 40,15" stroke="#dfba73" stroke-width="2.5" fill="none"/>
+          <!-- Olive Leaf Branch -->
+          <svg class="absolute -right-2.5 top-6 w-12 h-28 text-[#dfba73]" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M14,95 Q18,60 40,15" stroke="#dfba73" stroke-width="2.2" fill="none"/>
             <path d="M22,76 C8,74 10,62 24,70 Z" />
             <path d="M26,60 C40,58 38,46 27,54 Z" />
             <path d="M28,45 C14,43 16,31 30,39 Z" />
             <path d="M33,32 C47,30 45,18 34,26 Z" />
             <path d="M37,19 C31,9 43,7 41,18 Z" />
           </svg>
-
         </div>
       </div>
 
       <!-- Tap Indicator -->
-      <div class="mt-10 space-y-2">
-        <p class="font-cinzel text-xs sm:text-sm tracking-[0.45em] text-gold-200 uppercase group-hover:tracking-[0.55em] transition-all duration-300">
+      <div class="mt-8 text-center space-y-1.5">
+        <p class="font-cinzel text-[10px] tracking-[0.35em] text-[#faeed1] uppercase group-hover:tracking-[0.45em] transition-all duration-300">
           Touch To Open
         </p>
-        <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-gold-400 to-transparent mx-auto"></div>
-        <p class="text-[11px] text-gold-400/60 font-mono tracking-wider pt-1">انقر للدخول</p>
+        <div class="w-8 h-[1px] bg-gradient-to-r from-transparent via-[#dfba73]/60 to-transparent mx-auto"></div>
       </div>
     </div>
 
-    <!-- Bottom Controls for Splash -->
-    <div class="w-full max-w-sm flex items-center justify-between px-6 pb-2 text-xs font-cinzel text-gold-400/80">
-      <button id="splashMusicToggle" type="button" class="flex items-center space-x-2 hover:text-white transition-all cursor-pointer">
-        <span class="w-8 h-8 rounded-full border border-gold-400/50 flex items-center justify-center bg-black/40">
-          <svg id="splashIconPlay" class="w-3.5 h-3.5 hidden text-gold-200" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          <svg id="splashIconPause" class="w-3.5 h-3.5 block text-gold-400" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    <!-- Bottom Action Ribbon -->
+    <div class="w-full max-w-xs flex items-center justify-between px-4 pb-2 text-[10px] font-cinzel text-[#dfba73]/70">
+      <button id="splashMusicToggle" type="button" class="flex items-center space-x-2 hover:text-[#faeed1] transition-all cursor-pointer">
+        <span class="w-7 h-7 rounded-full border border-[#dfba73]/40 flex items-center justify-center bg-black/40">
+          <svg id="splashIconPlay" class="w-3 h-3 hidden text-[#faeed1]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="splashIconPause" class="w-3 h-3 block text-[#dfba73]" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
         </span>
-        <span class="tracking-widest uppercase text-[11px]">Audio</span>
+        <span class="tracking-widest uppercase">Music</span>
       </button>
 
-      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-white transition-all">
-        <span class="tracking-widest uppercase text-[11px]">Venue Map</span>
-        <span class="w-8 h-8 rounded-full border border-gold-400/50 flex items-center justify-center bg-black/40">
-          <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-[#faeed1] transition-all">
+        <span class="tracking-widest uppercase">Location</span>
+        <span class="w-7 h-7 rounded-full border border-[#dfba73]/40 flex items-center justify-center bg-black/40">
+          <svg class="w-3 h-3 text-[#dfba73]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
           </svg>
         </span>
@@ -195,573 +156,372 @@
 
   </div>
 
-  <!-- ==================================================== -->
-  <!-- 2. OPENING INVOCATION & HOST ANNOUNCEMENT (SPACIOUS) -->
-  <!-- ==================================================== -->
-  <section class="min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center relative max-w-3xl mx-auto">
-    
-    <div class="w-full luxe-card rounded-3xl p-8 sm:p-14 space-y-8 relative overflow-hidden">
-      
-      <!-- Top Floral Accent -->
-      <div class="flex items-center justify-center space-x-3 text-gold-400/70">
-        <span class="h-[1px] w-12 bg-gold-400/40"></span>
-        <span class="font-arabic text-3xl gold-foil-text leading-relaxed">﷽</span>
-        <span class="h-[1px] w-12 bg-gold-400/40"></span>
-      </div>
+  <!-- Floating Audio Button -->
+  <button id="mainMusicToggle" type="button" class="fixed bottom-5 right-5 z-40 bg-[#121614]/90 border border-[#dfba73]/40 text-[#dfba73] p-3 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.8)] hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Toggle audio">
+    <svg id="mainIconPlay" class="w-4 h-4 hidden text-[#faeed1] pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="mainIconPause" class="w-4 h-4 block text-[#dfba73] pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
 
-      <div class="space-y-2">
-        <p class="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-gold-400 uppercase font-semibold">
+  <!-- ==================================================== -->
+  <!-- 2. MAIN STORYTELLING FLOW (REFINED PROPORTIONS)      -->
+  <!-- ==================================================== -->
+  <div class="max-w-2xl mx-auto px-4 py-12 space-y-16 sm:space-y-20">
+
+    <!-- 1. SPIRITUAL HEADER & INVITATION (SMALL BISMILLAH) -->
+    <section class="text-center pt-6 space-y-5">
+      
+      <!-- Small, Subtle Bismillah -->
+      <div class="space-y-1">
+        <p class="font-cinzel text-[10px] sm:text-[11px] tracking-[0.25em] text-[#dfba73] uppercase">
           IN THE NAME OF ALLAH
         </p>
-        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.22em] text-gold-300/80 uppercase">
+        <p class="font-cinzel text-[8.5px] sm:text-[9.5px] tracking-[0.2em] text-[#dfba73]/70 uppercase">
           THE MOST BENEFICENT AND THE MOST MERCIFUL
         </p>
       </div>
 
-      <div class="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold-400/50 to-transparent mx-auto"></div>
+      <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#dfba73]/40 to-transparent mx-auto"></div>
 
-      <!-- Host Family Information -->
-      <div class="space-y-3">
-        <p class="font-cinzel text-[11px] tracking-[0.25em] text-gold-400/80 uppercase">
-          Together with their Families
-        </p>
-        <h2 class="font-cinzel text-lg sm:text-2xl font-bold tracking-wider text-gold-100">
+      <!-- Groom's Parents Announcement -->
+      <div class="space-y-1.5 pt-1">
+        <h2 class="font-cinzel text-xs sm:text-sm font-semibold tracking-wider text-[#faeed1]">
           ABDUL AZEEZ &amp; SUFAIRA AZEEZ
         </h2>
-        <p class="font-cinzel text-xs sm:text-sm tracking-widest text-gold-400">
+        <p class="font-cinzel text-[10px] tracking-widest text-[#dfba73]/90">
           PUNATHIL HOUSE, PURAMERI
         </p>
-        <p class="font-mono text-xs text-gold-300/90 tracking-wider">
+        <p class="font-mono text-[10px] text-[#ebd9a0]/80 tracking-wider">
           MOB : 9496164049
         </p>
       </div>
 
-      <p class="font-cinzel text-xs sm:text-sm text-gold-200/90 tracking-[0.18em] uppercase max-w-md mx-auto leading-relaxed pt-4">
-        REQUEST THE PLEASURE OF YOUR PRESENCE ON THE AUSPICIOUS OCCASION OF THE WEDDING OF THEIR BELOVED SON
+      <p class="font-cinzel text-[9.5px] sm:text-[10px] tracking-[0.18em] text-[#faeed1]/75 uppercase max-w-sm mx-auto leading-relaxed pt-1">
+        REQUEST THE PLEASURE OF YOUR PRESENCE ON THE OCCASION OF THE MARRIAGE OF OUR SON
       </p>
 
-      <!-- Scroll Indicator -->
-      <div class="pt-6">
-        <a href="#couple" class="inline-flex flex-col items-center text-xs tracking-widest text-gold-400/80 hover:text-gold-200 uppercase transition-colors">
-          <span class="font-cinzel text-[10px] tracking-[0.3em]">MEET THE COUPLE</span>
-          <svg class="w-4 h-4 mt-2 animate-bounce text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-          </svg>
-        </a>
-      </div>
+    </section>
 
-    </div>
-
-  </section>
-
-  <!-- ==================================================== -->
-  <!-- 3. THE COUPLE SHOWCASE (UNOBSTRUCTED, LUXURY FOCUS)  -->
-  <!-- ==================================================== -->
-  <section id="couple" class="min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center relative max-w-4xl mx-auto">
-    
-    <div class="w-full space-y-12">
+    <!-- 2. THE COUPLE (SEPARATE ELEGANT CARDS, NO OVERLAP) -->
+    <section class="space-y-5">
       
-      <div class="space-y-2">
-        <span class="font-cinzel text-xs tracking-[0.35em] text-gold-400/80 uppercase block">Holy Union</span>
-        <h2 class="font-cinzel text-2xl sm:text-3xl gold-foil-text tracking-widest uppercase">The Blessed Couple</h2>
-      </div>
-
       <!-- Groom Card -->
-      <div class="luxe-card rounded-3xl p-8 sm:p-14 relative overflow-hidden space-y-4">
-        <p class="font-cinzel text-[11px] tracking-[0.25em] text-gold-400/80 uppercase">The Groom</p>
+      <div class="glass-card rounded-2xl p-6 sm:p-8 text-center space-y-2 border border-[#dfba73]/25">
+        <p class="font-cinzel text-[9px] tracking-[0.25em] text-[#dfba73]/70 uppercase">Groom</p>
         
-        <div class="overflow-visible py-2">
-          <h1 class="font-script text-6xl sm:text-8xl lg:text-9xl gold-foil-text leading-tight select-none">
+        <div class="py-1">
+          <h1 class="font-script text-4xl sm:text-5xl gold-foil leading-tight">
             Muhammed Ajas
           </h1>
         </div>
 
-        <p class="font-arabic text-2xl text-gold-400/90 leading-relaxed">محمد أجاس</p>
-        
-        <div class="pt-2 space-y-1">
-          <p class="font-cinzel text-xs sm:text-sm text-gold-200 tracking-wider">
-            Son of Mr. Abdul Azeez &amp; Mrs. Sufaira Azeez
-          </p>
-          <p class="font-cinzel text-[11px] sm:text-xs text-gold-400/90 tracking-[0.16em] uppercase">
-            (Grand S/O. Late Andru Haji &amp; Kunhi Moidu)
-          </p>
-        </div>
+        <p class="font-cinzel text-[9.5px] text-[#dfba73] tracking-widest uppercase">
+          (GRAND S/O. LATE ANDRU HAJI &amp; KUNHI MOIDU)
+        </p>
       </div>
 
-      <!-- Elegant Divider Flourish -->
-      <div class="flex items-center justify-center space-x-6 py-2">
-        <span class="h-[1px] w-20 sm:w-32 bg-gradient-to-r from-transparent to-gold-400/60"></span>
-        <span class="font-script text-4xl sm:text-5xl text-gold-400 select-none">&amp;</span>
-        <span class="h-[1px] w-20 sm:w-32 bg-gradient-to-l from-transparent to-gold-400/60"></span>
+      <!-- Ampersand Divider -->
+      <div class="flex items-center justify-center space-x-3 text-[#dfba73]/60 py-1">
+        <span class="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#dfba73]/40"></span>
+        <span class="font-script text-2xl text-[#dfba73]">&amp;</span>
+        <span class="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#dfba73]/40"></span>
       </div>
 
       <!-- Bride Card -->
-      <div class="luxe-card rounded-3xl p-8 sm:p-14 relative overflow-hidden space-y-4">
-        <p class="font-cinzel text-[11px] tracking-[0.25em] text-gold-400/80 uppercase">The Bride</p>
+      <div class="glass-card rounded-2xl p-6 sm:p-8 text-center space-y-2 border border-[#dfba73]/25">
+        <p class="font-cinzel text-[9px] tracking-[0.25em] text-[#dfba73]/70 uppercase">Bride</p>
         
-        <div class="overflow-visible py-2">
-          <h1 class="font-script text-6xl sm:text-8xl lg:text-9xl gold-foil-text leading-tight select-none">
+        <div class="py-1">
+          <h1 class="font-script text-4xl sm:text-5xl gold-foil leading-tight">
             Saniya Sabah
           </h1>
         </div>
 
-        <p class="font-arabic text-2xl text-gold-400/90 leading-relaxed">سانية صباح</p>
-
-        <div class="pt-2 space-y-1">
-          <p class="font-cinzel text-xs sm:text-sm text-gold-200 tracking-wider">
-            Daughter of Mr. Sabah T.K &amp; Mrs. Faseema Rahida
+        <div class="space-y-0.5">
+          <p class="font-cinzel text-[9.5px] text-[#dfba73] tracking-widest uppercase">
+            (D/O. SABAH T.K &amp; FASEEMA RAHIDA
           </p>
-          <p class="font-cinzel text-[11px] sm:text-xs text-gold-400/90 tracking-[0.16em] uppercase">
-            (Thottatham Kunnummal, Edacheri)
+          <p class="font-cinzel text-[9px] text-[#dfba73]/80 tracking-widest uppercase">
+            THOTTATHAM KUNNUMMAL, EDACHERI)
           </p>
         </div>
       </div>
 
-    </div>
+    </section>
 
-  </section>
-
-  <!-- ==================================================== -->
-  <!-- 4. ITINERARY & CEREMONIES (GENEROUS SPACING)         -->
-  <!-- ==================================================== -->
-  <section id="events" class="min-h-screen flex flex-col justify-center items-center px-6 py-20 text-center relative max-w-4xl mx-auto">
-    
-    <div class="w-full space-y-10">
+    <!-- 3. DATE & CEREMONY DETAILS (AIRY 3-COLUMN BADGE) -->
+    <section class="space-y-4">
       
-      <div class="space-y-2">
-        <span class="font-cinzel text-xs tracking-[0.35em] text-gold-400/80 uppercase block">Schedule of Celebrations</span>
-        <h2 class="font-cinzel text-2xl sm:text-4xl gold-foil-text tracking-widest uppercase">The Auspicious Day</h2>
-        <p class="font-cinzel text-xs sm:text-sm text-gold-300/80 pt-1">
-          Saturday, 21 November 2026 • 11-Jamadul Akhir 1448
-        </p>
-      </div>
-
-      <!-- Grid of distinct spacious ceremony cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-left">
-        
-        <!-- Card 1: Nikah Ceremony -->
-        <div class="luxe-card rounded-3xl p-8 sm:p-10 space-y-4 border-l-4 border-l-gold-400 flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="w-10 h-10 rounded-full bg-gold-400/10 border border-gold-400/40 flex items-center justify-center text-gold-400 mb-2">
-              <span class="text-sm">✦</span>
-            </div>
-            <p class="font-arabic text-xl text-gold-400">عقد النكاح</p>
-            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-100">Nikah Ceremony</h3>
-            <p class="font-cinzel text-xs tracking-wider text-gold-300">The Sacred Vows</p>
-          </div>
-
-          <div class="space-y-1.5 pt-4 border-t border-gold-400/20">
-            <p class="font-cinzel text-sm font-semibold text-gold-200">6:30 PM (Evening)</p>
-            <p class="text-xs text-gold-300/80">Saturday, 21 November 2026</p>
-            <p class="text-xs text-gold-400/90 font-medium">Punathil House, Purameri</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Reception & Gathering -->
-        <div class="luxe-card rounded-3xl p-8 sm:p-10 space-y-4 border-l-4 border-l-gold-400 flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="w-10 h-10 rounded-full bg-gold-400/10 border border-gold-400/40 flex items-center justify-center text-gold-400 mb-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      <div class="glass-card rounded-2xl p-6 border border-[#dfba73]/30">
+        <div class="grid grid-cols-3 gap-2 items-center text-center">
+          
+          <!-- Column 1: Saturday 5:00 PM -->
+          <div class="space-y-1">
+            <div class="w-5 h-5 mx-auto text-[#dfba73]">
+              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
             </div>
-            <p class="font-arabic text-xl text-gold-400">حفل الاستقبال</p>
-            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-100">Welcome &amp; Gathering</h3>
-            <p class="font-cinzel text-xs tracking-wider text-gold-300">Join With Loved Ones</p>
+            <p class="font-cinzel text-[10.5px] font-semibold text-[#faeed1] tracking-wider uppercase">SATURDAY</p>
+            <p class="font-cinzel text-[10px] text-[#dfba73] font-medium">5.00 PM</p>
           </div>
 
-          <div class="space-y-1.5 pt-4 border-t border-gold-400/20">
-            <p class="font-cinzel text-sm font-semibold text-gold-200">5:00 PM Onwards</p>
-            <p class="text-xs text-gold-300/80">Saturday, 21 November 2026</p>
-            <p class="text-xs text-gold-400/90 font-medium">Punathil House, Purameri</p>
+          <!-- Column 2: 21 November 2026 -->
+          <div class="border-x border-[#dfba73]/25 px-2 space-y-0.5">
+            <p class="font-cinzel text-3xl sm:text-4xl font-light text-[#faeed1] leading-none">21</p>
+            <p class="font-cinzel text-[10.5px] font-semibold tracking-widest text-[#dfba73] uppercase">NOVEMBER</p>
+            <p class="font-cinzel text-[9.5px] text-[#ebd9a0]/90">2026</p>
+            <p class="text-[8px] text-[#dfba73]/70 font-mono tracking-wider pt-0.5">11-JAMADUL AKHIR 1448</p>
           </div>
-        </div>
 
+          <!-- Column 3: Venue -->
+          <div class="space-y-1">
+            <div class="w-5 h-5 mx-auto text-[#dfba73]">
+              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <p class="font-cinzel text-[10px] font-semibold text-[#faeed1] tracking-wider uppercase leading-tight">PUNATHIL HOUSE</p>
+            <p class="font-cinzel text-[10px] text-[#dfba73]">PURAMERI</p>
+          </div>
+
+        </div>
       </div>
 
-      <!-- Hijri Badge -->
-      <div class="inline-block py-2.5 px-6 rounded-full border border-gold-400/40 bg-gold-400/10">
-        <p class="font-cinzel text-xs tracking-[0.25em] text-gold-200 uppercase">
-          ISLAMIC DATE: 11-JAMADUL AKHIR 1448
+      <!-- Nikah Ceremony Card -->
+      <div class="glass-card rounded-xl py-3 px-4 text-center border border-[#dfba73]/30">
+        <p class="font-cinzel text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-[#faeed1] uppercase">
+          NIKAH: 21 SATURDAY @ 6.30 PM
         </p>
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- 4. COUNTDOWN TIMER -->
+    <section class="text-center space-y-4">
+      <p class="font-cinzel text-[10px] tracking-[0.25em] text-[#dfba73]/80 uppercase">
+        Countdown to Auspicious Day
+      </p>
 
-  <!-- ==================================================== -->
-  <!-- 5. LIVE COUNTDOWN TIMER (STANDALONE BREATHING ROOM)  -->
-  <!-- ==================================================== -->
-  <section class="py-20 px-6 text-center relative max-w-3xl mx-auto">
-    
-    <div class="w-full luxe-card rounded-3xl p-8 sm:p-12 space-y-8">
-      
-      <div class="space-y-2">
-        <span class="font-cinzel text-xs tracking-[0.35em] text-gold-400/80 uppercase block">Until We Celebrate</span>
-        <h2 class="font-cinzel text-2xl sm:text-3xl gold-foil-text tracking-widest uppercase">The Countdown</h2>
-        <p class="text-xs text-gold-300/70 font-cinzel">Counting down every second to our union</p>
-      </div>
-
-      <div class="grid grid-cols-4 gap-3 sm:gap-6 pt-2">
-        <div class="bg-black/60 border border-gold-400/40 p-4 sm:p-6 rounded-2xl shadow-inner">
-          <span id="days" class="font-cinzel text-3xl sm:text-5xl text-gold-100 block font-light">--</span>
-          <span class="font-cinzel text-[10px] sm:text-xs text-gold-400 uppercase tracking-widest mt-2 block">Days</span>
+      <div class="grid grid-cols-4 gap-2.5 sm:gap-4">
+        <div class="glass-card p-3 rounded-xl text-center">
+          <span id="days" class="font-cinzel text-xl sm:text-2xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[8.5px] uppercase tracking-wider text-[#dfba73]/80 mt-1 block">Days</span>
         </div>
-        <div class="bg-black/60 border border-gold-400/40 p-4 sm:p-6 rounded-2xl shadow-inner">
-          <span id="hours" class="font-cinzel text-3xl sm:text-5xl text-gold-100 block font-light">--</span>
-          <span class="font-cinzel text-[10px] sm:text-xs text-gold-400 uppercase tracking-widest mt-2 block">Hours</span>
+        <div class="glass-card p-3 rounded-xl text-center">
+          <span id="hours" class="font-cinzel text-xl sm:text-2xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[8.5px] uppercase tracking-wider text-[#dfba73]/80 mt-1 block">Hours</span>
         </div>
-        <div class="bg-black/60 border border-gold-400/40 p-4 sm:p-6 rounded-2xl shadow-inner">
-          <span id="minutes" class="font-cinzel text-3xl sm:text-5xl text-gold-100 block font-light">--</span>
-          <span class="font-cinzel text-[10px] sm:text-xs text-gold-400 uppercase tracking-widest mt-2 block">Minutes</span>
+        <div class="glass-card p-3 rounded-xl text-center">
+          <span id="minutes" class="font-cinzel text-xl sm:text-2xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[8.5px] uppercase tracking-wider text-[#dfba73]/80 mt-1 block">Minutes</span>
         </div>
-        <div class="bg-black/60 border border-gold-400/40 p-4 sm:p-6 rounded-2xl shadow-inner">
-          <span id="seconds" class="font-cinzel text-3xl sm:text-5xl text-gold-100 block font-light">--</span>
-          <span class="font-cinzel text-[10px] sm:text-xs text-gold-400 uppercase tracking-widest mt-2 block">Seconds</span>
+        <div class="glass-card p-3 rounded-xl text-center">
+          <span id="seconds" class="font-cinzel text-xl sm:text-2xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[8.5px] uppercase tracking-wider text-[#dfba73]/80 mt-1 block">Seconds</span>
         </div>
       </div>
+    </section>
 
-    </div>
-
-  </section>
-
-  <!-- ==================================================== -->
-  <!-- 6. LOCATION & NAVIGATION (CLEAR QR CODE & BUTTON)   -->
-  <!-- ==================================================== -->
-  <section id="location" class="py-20 px-6 text-center relative max-w-3xl mx-auto">
-    
-    <div class="w-full luxe-card rounded-3xl p-8 sm:p-12 space-y-8">
-      
-      <div class="space-y-2">
-        <span class="font-cinzel text-xs tracking-[0.35em] text-gold-400/80 uppercase block">Find Your Way</span>
-        <h2 class="font-cinzel text-2xl sm:text-3xl gold-foil-text tracking-widest uppercase">Venue &amp; Location</h2>
-        <p class="font-cinzel text-sm sm:text-base font-semibold text-gold-100 pt-1">
-          Punathil House
-        </p>
-        <p class="text-xs sm:text-sm text-gold-300/80">
-          Purameri, Kozhikode District, Kerala
+    <!-- 5. LOCATION & QR CODE CARD -->
+    <section class="glass-card rounded-2xl p-6 sm:p-8 text-center space-y-5 border border-[#dfba73]/30">
+      <div class="space-y-1">
+        <h2 class="font-cinzel text-xs sm:text-sm font-semibold tracking-[0.25em] text-[#faeed1] uppercase">
+          Location &amp; Directions
+        </h2>
+        <p class="font-cinzel text-[10px] text-[#dfba73]">
+          Punathil House, Purameri, Kerala
         </p>
       </div>
 
-      <!-- High-Contrast QR Code Card -->
-      <div class="py-2 flex flex-col items-center justify-center">
-        <div class="p-4 bg-[#fbf7ee] border-2 border-gold-400 rounded-2xl shadow-xl inline-block hover:scale-105 transition-transform">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
-               alt="Punathil House Location QR Code" 
-               class="w-36 h-36 mx-auto rounded" 
+      <!-- Scannable QR Code -->
+      <div class="flex justify-center py-1">
+        <div class="p-3 bg-white border border-[#dfba73]/40 rounded-xl shadow-md inline-block">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
+               alt="Venue Map QR Code" 
+               class="w-28 h-28 mx-auto rounded" 
                loading="lazy" />
-          <p class="font-cinzel text-[11px] font-bold text-[#1f1b13] tracking-[0.25em] mt-2 uppercase">
-            SCAN TO NAVIGATE
-          </p>
         </div>
       </div>
 
-      <!-- Open in Google Maps Primary Button -->
       <div>
         <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
            target="_blank" 
            rel="noopener noreferrer"
-           class="inline-flex items-center gap-3 bg-gradient-to-r from-gold-600 via-gold-400 to-gold-600 hover:brightness-110 text-black font-cinzel text-xs sm:text-sm font-bold px-8 sm:px-10 py-4 rounded-full transition-all shadow-[0_0_30px_rgba(223,186,115,0.35)]">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+           class="inline-flex items-center gap-2 bg-gradient-to-r from-[#dfba73] via-[#ffd88a] to-[#dfba73] hover:brightness-110 text-black font-cinzel text-[10px] font-semibold px-6 py-2.5 rounded-full transition-all shadow-md">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
           OPEN IN GOOGLE MAPS
         </a>
       </div>
+    </section>
 
-    </div>
+    <!-- 6. SHARING THE HAPPINESS / FAMILY BLESSINGS -->
+    <section class="text-center space-y-2 pt-2">
+      <div class="text-[#dfba73] text-xs">❤</div>
+      <p class="font-cinzel text-[9.5px] tracking-[0.25em] text-[#dfba73]/80 uppercase">SHARING THE HAPPINESS</p>
+      <p class="font-cinzel text-xs font-semibold text-[#faeed1] tracking-wider">MUHAMMED SHAHAS, MUHAMMED SHANIS</p>
+      <p class="font-cinzel text-[10.5px] text-[#dfba73] tracking-wider">PUNATHIL FAMILY &amp; PUTHIYOTTIL FAMILY</p>
+    </section>
 
-  </section>
-
-  <!-- ==================================================== -->
-  <!-- 7. FAMILY WISHES & ACTIONS (CONTACT & SAVE CARD)    -->
-  <!-- ==================================================== -->
-  <section class="py-16 px-6 max-w-3xl mx-auto space-y-8">
-    
-    <!-- Sharing Happiness Note -->
-    <div class="w-full luxe-card rounded-3xl p-8 sm:p-10 text-center space-y-4">
-      <p class="font-arabic text-xl sm:text-2xl text-gold-400">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
+    <!-- 7. ACTION BUTTONS: CALL HOST & SAVE INVITATION -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
       
-      <div class="space-y-1.5 pt-2">
-        <p class="font-cinzel text-xs tracking-[0.25em] text-gold-400/80 uppercase">Sharing The Happiness</p>
-        <h4 class="font-cinzel text-sm sm:text-base font-bold text-gold-100">
-          MUHAMMED SHAHAS, MUHAMMED SHANIS
-        </h4>
-        <p class="font-cinzel text-xs text-gold-300">
-          PUNATHIL FAMILY &amp; PUTHIYOTTIL FAMILY
-        </p>
-      </div>
-    </div>
-
-    <!-- Action Buttons Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      
-      <!-- Call Host -->
-      <a href="tel:9496164049" class="luxe-card hover:border-gold-400 p-5 rounded-2xl flex items-center justify-center space-x-4 transition-all">
-        <div class="p-3 rounded-xl bg-gold-400/15 text-gold-400 shrink-0">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <a href="tel:9496164049" class="glass-card hover:border-[#dfba73] p-3.5 rounded-xl flex items-center justify-center space-x-3 transition-all text-center">
+        <div class="p-2 rounded-lg bg-[#dfba73]/15 text-[#dfba73] shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
           </svg>
         </div>
         <div class="text-left">
-          <p class="font-cinzel text-xs font-semibold text-gold-100">Call Host</p>
-          <p class="text-xs text-gold-400 font-mono">9496164049</p>
+          <p class="font-cinzel text-[10.5px] font-semibold text-[#faeed1]">Contact Host</p>
+          <p class="font-mono text-[10px] text-[#dfba73]">9496164049</p>
         </div>
       </a>
 
-      <!-- Save / Download Card -->
-      <button id="downloadCardBtn" onclick="downloadInvitationCard()" type="button" class="luxe-card hover:border-gold-400 p-5 rounded-2xl flex items-center justify-center space-x-4 transition-all cursor-pointer">
-        <div class="p-3 rounded-xl bg-gold-400/15 text-gold-400 shrink-0">
-          <svg id="dlIconNormal" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <button id="downloadCardBtn" onclick="downloadInvitationCard()" type="button" class="glass-card hover:border-[#dfba73] p-3.5 rounded-xl flex items-center justify-center space-x-3 transition-all text-center cursor-pointer">
+        <div class="p-2 rounded-lg bg-[#dfba73]/15 text-[#dfba73] shrink-0">
+          <svg id="dlIconNormal" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
           </svg>
-          <svg id="dlIconSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
+          <svg id="dlIconSpinner" class="w-4 h-4 animate-spin hidden" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
         </div>
         <div class="text-left">
-          <p id="dlBtnText" class="font-cinzel text-xs font-semibold text-gold-100">Save Card</p>
-          <p id="dlBtnSubtext" class="text-xs text-gold-400/80">Download High-Res Card</p>
+          <p id="dlBtnText" class="font-cinzel text-[10.5px] font-semibold text-[#faeed1]">Save Card</p>
+          <p id="dlBtnSubtext" class="text-[10px] text-[#dfba73]">Download Image</p>
         </div>
       </button>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- FOOTER -->
+    <footer class="text-center pt-8 pb-4 border-t border-[#dfba73]/20 space-y-1">
+      <p class="font-cinzel text-[9px] tracking-[0.3em] text-[#dfba73]/70 uppercase">Punathil &amp; Puthiyottil Family</p>
+      <p class="font-cinzel text-[10.5px] text-[#faeed1]">Muhammed Ajas &amp; Saniya Sabah</p>
+      <p class="font-cinzel text-[8.5px] text-[#dfba73]/60 tracking-wider">21 NOVEMBER 2026 • PURAMERI</p>
+    </footer>
 
-  <!-- ==================================================== -->
-  <!-- 8. FOOTER                                            -->
-  <!-- ==================================================== -->
-  <footer class="py-12 px-6 border-t border-gold-400/20 text-center space-y-2 bg-noir-950">
-    <p class="font-cinzel text-xs text-gold-400 tracking-[0.25em] uppercase">
-      Muhammed Ajas &amp; Saniya Sabah
-    </p>
-    <p class="text-xs text-gold-300/60 font-cinzel">
-      Saturday, 21 November 2026 • Purameri
-    </p>
-  </footer>
+  </div>
 
-  <!-- ==================================================== -->
-  <!-- SCRIPTS: DUAL AUDIO, COUNTDOWN, CANVAS GENERATOR    -->
-  <!-- ==================================================== -->
+  <!-- Scripts: Dual-Engine Audio, Live Countdown & Image Card Generator -->
   <script>
     const coverPage = document.getElementById("coverPage");
     const audio = document.getElementById("bgAudio");
 
-    // Dual Engine Audio: Web Audio API Romantic Acoustic Synthesizer
-    // Modeled precisely after the romantic "Aasma" melody motif from Humnava Mere
-    let isSynthesizerActive = false;
-    let synthTimeout = null;
+    // ==========================================
+    // GUARANTEED AUDIO ENGINE: HTML5 + SYNTHESIZER FALLBACK
+    // ==========================================
+    let synthPlaying = false;
     let audioCtx = null;
-    let masterGain = null;
-    let delayNode = null;
-    let feedbackGain = null;
-
-    // "Humnava Mere" - iconic melodic motif sequence (frequencies in Hz + duration in ms)
-    // "Aye aasmaan tu bata de kahan hai meri vo jannat..."
-    const humnavaAasmaNotes = [
-      // Phrase 1: "Aye mere aasmaan..."
-      { note: 329.63, dur: 450, chord: 164.81 }, // E4 (Em chord root E3)
-      { note: 369.99, dur: 380, chord: null },   // F#4
-      { note: 392.00, dur: 580, chord: null },   // G4
-      { note: 369.99, dur: 380, chord: null },   // F#4
-      { note: 329.63, dur: 620, chord: 130.81 }, // E4 (C3 root)
-      { note: 293.66, dur: 400, chord: null },   // D4
-      { note: 246.94, dur: 700, chord: null },   // B3
-
-      // Phrase 2: "Humnava mere tu..."
-      { note: 293.66, dur: 400, chord: 146.83 }, // D4 (D3 root)
-      { note: 329.63, dur: 380, chord: null },   // E4
-      { note: 369.99, dur: 550, chord: null },   // F#4
-      { note: 329.63, dur: 380, chord: null },   // E4
-      { note: 293.66, dur: 520, chord: 123.47 }, // D4 (B2 root)
-      { note: 246.94, dur: 420, chord: null },   // B3
-      { note: 220.00, dur: 780, chord: null },   // A3
-
-      // Phrase 3: Ascending emotive arch
-      { note: 246.94, dur: 380, chord: 164.81 }, // B3
-      { note: 293.66, dur: 380, chord: null },   // D4
-      { note: 329.63, dur: 450, chord: null },   // E4
-      { note: 392.00, dur: 550, chord: 174.61 }, // G4 (F3 root)
-      { note: 440.00, dur: 600, chord: null },   // A4
-      { note: 493.88, dur: 850, chord: 196.00 }, // B4 (G3 root)
-      { note: 440.00, dur: 500, chord: null },   // A4
-      { note: 392.00, dur: 500, chord: null },   // G4
-      { note: 369.99, dur: 600, chord: 146.83 }, // F#4
-      { note: 329.63, dur: 950, chord: 164.81 }  // E4 sustained
-    ];
-
-    let currentStep = 0;
-
-    function initWebAudio() {
-      try {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextClass) return;
-        audioCtx = new AudioContextClass();
-
-        // Master Gain
-        masterGain = audioCtx.createGain();
-        masterGain.gain.setValueAtTime(0.24, audioCtx.currentTime);
-
-        // Gentle warm acoustic delay / reverb effect
-        delayNode = audioCtx.createDelay();
-        delayNode.delayTime.setValueAtTime(0.28, audioCtx.currentTime);
-
-        feedbackGain = audioCtx.createGain();
-        feedbackGain.gain.setValueAtTime(0.32, audioCtx.currentTime);
-
-        delayNode.connect(feedbackGain);
-        feedbackGain.connect(delayNode);
-        delayNode.connect(masterGain);
-
-        masterGain.connect(audioCtx.destination);
-      } catch (err) {
-        console.warn("WebAudio initialization warning:", err);
-      }
-    }
-
-    function playWarmNote(freq, durMs, isBass) {
-      if (!audioCtx || !masterGain) return;
-      const now = audioCtx.currentTime;
-
-      // Soft dual warm oscillators (sine + triangle for acoustic music-box / harp warmth)
-      const osc1 = audioCtx.createOscillator();
-      const osc2 = audioCtx.createOscillator();
-      const noteGain = audioCtx.createGain();
-
-      osc1.type = isBass ? "sine" : "triangle";
-      osc2.type = "sine";
-
-      osc1.frequency.setValueAtTime(freq, now);
-      osc2.frequency.setValueAtTime(freq * (isBass ? 1 : 1.002), now); // slight chorus shimmer
-
-      const durSec = durMs / 1000;
-      const peakVol = isBass ? 0.16 : 0.22;
-
-      // Bell / acoustic pluck envelope
-      noteGain.gain.setValueAtTime(0.0001, now);
-      noteGain.gain.exponentialRampToValueAtTime(peakVol, now + 0.04);
-      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + durSec * 1.4);
-
-      osc1.connect(noteGain);
-      osc2.connect(noteGain);
-
-      noteGain.connect(masterGain);
-      if (!isBass && delayNode) {
-        noteGain.connect(delayNode);
-      }
-
-      osc1.start(now);
-      osc2.start(now);
-      osc1.stop(now + durSec * 1.5);
-      osc2.stop(now + durSec * 1.5);
-    }
-
-    function stepSynthesizer() {
-      if (!isSynthesizerActive) return;
-      if (audioCtx && audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-
-      const item = humnavaAasmaNotes[currentStep % humnavaAasmaNotes.length];
-
-      // Play melody note
-      playWarmNote(item.note, item.dur, false);
-
-      // Play soft bass/chord root note if present
-      if (item.chord) {
-        playWarmNote(item.chord, item.dur * 1.5, true);
-      }
-
-      currentStep++;
-      synthTimeout = setTimeout(stepSynthesizer, item.dur + 40);
-    }
-
-    function startSynthesizer() {
-      if (!audioCtx) initWebAudio();
-      if (!audioCtx) return;
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-      isSynthesizerActive = true;
-      if (synthTimeout) clearTimeout(synthTimeout);
-      updateAudioIcons(true);
-      stepSynthesizer();
-    }
-
-    function stopSynthesizer() {
-      isSynthesizerActive = false;
-      if (synthTimeout) {
-        clearTimeout(synthTimeout);
-        synthTimeout = null;
-      }
-      updateAudioIcons(false);
-    }
-
-    const MAX_VOL = 0.55;
-    audio.volume = MAX_VOL;
+    let synthInterval = null;
 
     const splashIconPlay = document.getElementById("splashIconPlay");
     const splashIconPause = document.getElementById("splashIconPause");
-    const musicIconPlay = document.getElementById("musicIconPlay");
-    const musicIconPause = document.getElementById("musicIconPause");
+    const mainIconPlay = document.getElementById("mainIconPlay");
+    const mainIconPause = document.getElementById("mainIconPause");
 
-    function updateAudioIcons(isPlaying) {
+    function renderIcons(isPlaying) {
       if (isPlaying) {
         splashIconPlay.classList.remove("hidden");
         splashIconPause.classList.add("hidden");
-        musicIconPlay.classList.remove("hidden");
-        musicIconPause.classList.add("hidden");
+        mainIconPlay.classList.remove("hidden");
+        mainIconPause.classList.add("hidden");
       } else {
         splashIconPlay.classList.add("hidden");
         splashIconPause.classList.remove("hidden");
-        musicIconPlay.classList.add("hidden");
-        musicIconPause.classList.remove("hidden");
+        mainIconPlay.classList.add("hidden");
+        mainIconPause.classList.remove("hidden");
       }
     }
 
-    audio.addEventListener("play", () => {
-      // If native MP3 starts playing successfully, stop the synth fallback
-      if (isSynthesizerActive) {
-        stopSynthesizer();
-      }
-      updateAudioIcons(true);
-    });
+    // Melodic notes for "Humnava Mere" (Aasma / Humnava motif)
+    function startHumnavaSynth() {
+      if (synthPlaying) return;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
 
-    audio.addEventListener("pause", () => {
-      if (!isSynthesizerActive) {
-        updateAudioIcons(false);
-      }
-    });
+        synthPlaying = true;
+        renderIcons(true);
 
-    audio.addEventListener("error", () => {
-      console.warn("Audio element media source failed or inaccessible, switching to internal Humnava melody synthesizer.");
-      startSynthesizer();
-    });
+        const notes = [
+          { f: 261.63, d: 0.5 },  // C4
+          { f: 293.66, d: 0.5 },  // D4
+          { f: 329.63, d: 1.0 },  // E4 (Aas...)
+          { f: 392.00, d: 0.8 },  // G4 (maan...)
+          { f: 349.23, d: 0.6 },  // F4
+          { f: 329.63, d: 1.2 },  // E4
+          { f: 293.66, d: 0.6 },  // D4
+          { f: 261.63, d: 1.4 },  // C4
+          { f: 220.00, d: 0.6 },  // A3
+          { f: 261.63, d: 1.6 }   // C4 (Humnava mere tu)
+        ];
+
+        let idx = 0;
+        function playNote(freq, dur) {
+          if (!synthPlaying || !audioCtx) return;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+          gain.gain.setValueAtTime(0, audioCtx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.18, audioCtx.currentTime + 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start();
+          osc.stop(audioCtx.currentTime + dur + 0.1);
+        }
+
+        function step() {
+          if (!synthPlaying) return;
+          const current = notes[idx];
+          playNote(current.f, current.d);
+          idx = (idx + 1) % notes.length;
+          synthInterval = setTimeout(step, current.d * 1000 + 120);
+        }
+        step();
+      } catch (e) {
+        console.warn("Synth failed:", e);
+      }
+    }
+
+    function stopHumnavaSynth() {
+      synthPlaying = false;
+      if (synthInterval) clearTimeout(synthInterval);
+      if (audioCtx && audioCtx.state !== 'closed') {
+        try { audioCtx.suspend(); } catch (err) {}
+      }
+      renderIcons(false);
+    }
 
     function playAudioSafe() {
-      // 1. Try waking up AudioContext directly on the user gesture
-      if (!audioCtx) initWebAudio();
-      if (audioCtx && audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-
-      // 2. Try playing HTML5 audio (humnava.mp3 / wedding-song.mp3 / stream)
-      audio.volume = MAX_VOL;
-      const playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          updateAudioIcons(true);
+      audio.volume = 0.5;
+      const promise = audio.play();
+      if (promise !== undefined) {
+        promise.then(() => {
+          renderIcons(true);
         }).catch((err) => {
-          console.warn("Autoplay / Media block encountered, starting Humnava synthesizer melody:", err);
-          startSynthesizer();
+          console.log("Using acoustic synthesizer fallback:", err);
+          startHumnavaSynth();
         });
       } else {
-        startSynthesizer();
+        renderIcons(true);
       }
+    }
+
+    function openInvitation() {
+      coverPage.classList.add("opened");
+      playAudioSafe();
     }
 
     function toggleAudio(e) {
@@ -769,26 +529,22 @@
         e.preventDefault();
         e.stopPropagation();
       }
-
-      if (isSynthesizerActive) {
-        stopSynthesizer();
-      } else if (!audio.paused) {
-        audio.pause();
-        updateAudioIcons(false);
-      } else {
+      if (synthPlaying) {
+        stopHumnavaSynth();
+        return;
+      }
+      if (audio.paused) {
         playAudioSafe();
+      } else {
+        audio.pause();
+        renderIcons(false);
       }
     }
 
     document.getElementById("splashMusicToggle").onclick = toggleAudio;
-    document.getElementById("floatingMusicToggle").onclick = toggleAudio;
+    document.getElementById("mainMusicToggle").onclick = toggleAudio;
 
-    function openInvitation() {
-      coverPage.classList.add("opened");
-      playAudioSafe();
-    }
-
-    // Countdown: 21 November 2026, 5:00 PM IST
+    // Countdown Targeting Saturday 21 Nov 2026 @ 5:00 PM IST
     const targetDate = new Date("2026-11-21T17:00:00+05:30").getTime();
 
     function updateCountdown() {
@@ -810,125 +566,120 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // High-Resolution Card Downloader
+    // Canvas Downloader for Saving the Invitation
     async function generateCardCanvas() {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       
       const width = 1200;
-      const height = 1850;
+      const height = 1800;
       canvas.width = width;
       canvas.height = height;
 
-      // Dark slate background
-      ctx.fillStyle = "#090c0a";
+      // Dark Charcoal Background
+      ctx.fillStyle = "#0c100e";
       ctx.fillRect(0, 0, width, height);
 
-      // Gold Frames
-      ctx.strokeStyle = "#dfba73";
-      ctx.lineWidth = 3;
-      ctx.strokeRect(40, 40, width - 80, height - 80);
+      // Gold Double Border
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.45)";
+      ctx.lineWidth = 2.5;
+      ctx.strokeRect(50, 50, width - 100, height - 100);
 
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.35)";
-      ctx.lineWidth = 1.5;
-      ctx.strokeRect(55, 55, width - 110, height - 110);
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.25)";
+      ctx.lineWidth = 1.2;
+      ctx.strokeRect(65, 65, width - 130, height - 130);
 
       ctx.textAlign = "center";
 
-      // Islamic Invocation
+      // Small Bismillah
       ctx.fillStyle = "#dfba73";
-      ctx.font = '600 20px "Cinzel", serif';
-      ctx.fillText("IN THE NAME OF ALLAH", width / 2, 140);
-      ctx.font = '500 15px "Cinzel", serif';
-      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
-      ctx.fillText("THE MOST BENEFICENT AND THE MOST MERCIFUL", width / 2, 172);
+      ctx.font = '500 16px "Cinzel", serif';
+      ctx.fillText("IN THE NAME OF ALLAH", width / 2, 130);
+      ctx.font = '400 13px "Cinzel", serif';
+      ctx.fillStyle = "rgba(223, 186, 115, 0.75)";
+      ctx.fillText("THE MOST BENEFICENT AND THE MOST MERCIFUL", width / 2, 155);
 
-      // Parents details
+      // Host Parents
       ctx.fillStyle = "#faeed1";
-      ctx.font = '700 26px "Cinzel", serif';
-      ctx.fillText("ABDUL AZEEZ & SUFAIRA AZEEZ", width / 2, 250);
-      ctx.font = '500 17px "Montserrat", sans-serif';
+      ctx.font = '600 20px "Cinzel", serif';
+      ctx.fillText("ABDUL AZEEZ & SUFAIRA AZEEZ", width / 2, 230);
+      ctx.font = '500 14px "Cinzel", serif';
       ctx.fillStyle = "#dfba73";
-      ctx.fillText("PUNATHIL HOUSE, PURAMERI", width / 2, 285);
-      ctx.fillText("MOB : 9496164049", width / 2, 315);
+      ctx.fillText("PUNATHIL HOUSE, PURAMERI", width / 2, 260);
+      ctx.fillText("MOB : 9496164049", width / 2, 285);
 
-      ctx.font = '500 15px "Cinzel", serif';
+      ctx.font = '400 13.5px "Cinzel", serif';
       ctx.fillStyle = "rgba(250, 238, 209, 0.85)";
-      ctx.fillText("REQUEST THE PLEASURE OF YOUR PRESENCE ON THE OCCASION", width / 2, 375);
-      ctx.fillText("OF THE MARRIAGE OF OUR SON", width / 2, 405);
+      ctx.fillText("REQUEST THE PLEASURE OF YOUR PRESENCE ON THE OCCASION OF THE MARRIAGE OF OUR SON", width / 2, 340);
 
       // Groom
       ctx.fillStyle = "#ebd9a0";
-      ctx.font = '700 86px "Alex Brush", cursive';
-      ctx.fillText("Muhammed Ajas", width / 2, 530);
+      ctx.font = '600 70px "Alex Brush", cursive';
+      ctx.fillText("Muhammed Ajas", width / 2, 450);
 
-      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
-      ctx.font = '600 15px "Cinzel", serif';
-      ctx.fillText("(GRAND S/O. LATE ANDRU HAJI & KUNHI MOIDU)", width / 2, 575);
+      ctx.fillStyle = "rgba(223, 186, 115, 0.8)";
+      ctx.font = '500 13px "Cinzel", serif';
+      ctx.fillText("(GRAND S/O. LATE ANDRU HAJI & KUNHI MOIDU)", width / 2, 490);
 
-      // Ampersand
+      ctx.font = '400 30px "Alex Brush", cursive';
       ctx.fillStyle = "#dfba73";
-      ctx.font = 'italic 34px "Playfair Display", serif';
-      ctx.fillText("&", width / 2, 635);
+      ctx.fillText("- and -", width / 2, 545);
 
       // Bride
       ctx.fillStyle = "#ebd9a0";
-      ctx.font = '700 86px "Alex Brush", cursive';
-      ctx.fillText("Saniya Sabah", width / 2, 730);
+      ctx.font = '600 70px "Alex Brush", cursive';
+      ctx.fillText("Saniya Sabah", width / 2, 630);
 
-      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
-      ctx.font = '600 15px "Cinzel", serif';
-      ctx.fillText("(D/O. SABAH T.K & FASEEMA RAHIDA)", width / 2, 775);
-      ctx.fillText("THOTTATHAM KUNNUMMAL, EDACHERI", width / 2, 805);
+      ctx.fillStyle = "rgba(223, 186, 115, 0.8)";
+      ctx.font = '500 13px "Cinzel", serif';
+      ctx.fillText("(D/O. SABAH T.K & FASEEMA RAHIDA)", width / 2, 670);
+      ctx.fillText("THOTTATHAM KUNNUMMAL, EDACHERI", width / 2, 695);
 
-      // Schedule Box
-      ctx.fillStyle = "rgba(18, 24, 21, 0.9)";
-      ctx.fillRect(150, 880, 900, 310);
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.45)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(150, 880, 900, 310);
+      // Details Box
+      ctx.fillStyle = "rgba(20, 25, 23, 0.85)";
+      ctx.fillRect(160, 770, 880, 280);
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.4)";
+      ctx.strokeRect(160, 770, 880, 280);
 
-      // Saturday 5 PM
+      // 3 Columns inside Box
       ctx.fillStyle = "#faeed1";
-      ctx.font = '700 24px "Cinzel", serif';
-      ctx.fillText("SATURDAY", 300, 1010);
-      ctx.fillStyle = "#dfba73";
       ctx.font = '600 20px "Cinzel", serif';
-      ctx.fillText("5.00 PM", 300, 1050);
-
-      // 21 November 2026
-      ctx.fillStyle = "#faeed1";
-      ctx.font = '300 82px "Cinzel", serif';
-      ctx.fillText("21", width / 2, 1005);
-      ctx.font = '700 22px "Cinzel", serif';
+      ctx.fillText("SATURDAY", 310, 880);
       ctx.fillStyle = "#dfba73";
-      ctx.fillText("NOVEMBER 2026", width / 2, 1050);
-      ctx.font = '500 14px "Montserrat", sans-serif';
-      ctx.fillText("11-JAMADUL AKHIR 1448", width / 2, 1085);
+      ctx.font = '400 17px "Cinzel", serif';
+      ctx.fillText("5.00 PM", 310, 915);
 
-      // Punathil House
       ctx.fillStyle = "#faeed1";
-      ctx.font = '700 24px "Cinzel", serif';
-      ctx.fillText("PUNATHIL HOUSE", 900, 1010);
-      ctx.fillStyle = "#dfba73";
-      ctx.font = '600 20px "Cinzel", serif';
-      ctx.fillText("PURAMERI", 900, 1050);
-
-      // Nikah Timing
-      ctx.fillStyle = "#faeed1";
-      ctx.font = '700 28px "Cinzel", serif';
-      ctx.fillText("NIKAH: 21 SATURDAY @ 6.30 PM", width / 2, 1300);
-
-      // Sharing The Happiness
-      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
-      ctx.font = '600 16px "Cinzel", serif';
-      ctx.fillText("SHARING THE HAPPINESS", width / 2, 1420);
-      ctx.fillStyle = "#faeed1";
-      ctx.font = '700 22px "Cinzel", serif';
-      ctx.fillText("MUHAMMED SHAHAS, MUHAMMED SHANIS", width / 2, 1465);
+      ctx.font = '400 70px "Cinzel", serif';
+      ctx.fillText("21", width / 2, 880);
       ctx.font = '600 18px "Cinzel", serif';
       ctx.fillStyle = "#dfba73";
-      ctx.fillText("PUNATHIL FAMILY & PUTHIYOTTIL FAMILY", width / 2, 1505);
+      ctx.fillText("NOVEMBER 2026", width / 2, 915);
+      ctx.font = '400 12px "Montserrat", sans-serif';
+      ctx.fillText("11-JAMADUL AKHIR 1448", width / 2, 945);
+
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '600 20px "Cinzel", serif';
+      ctx.fillText("PUNATHIL HOUSE", 890, 880);
+      ctx.fillStyle = "#dfba73";
+      ctx.font = '400 17px "Cinzel", serif';
+      ctx.fillText("PURAMERI", 890, 915);
+
+      // Nikah Ceremony
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '600 22px "Cinzel", serif';
+      ctx.fillText("NIKAH: 21 SATURDAY @ 6.30 PM", width / 2, 1150);
+
+      // Compliments
+      ctx.fillStyle = "rgba(223, 186, 115, 0.75)";
+      ctx.font = '400 13px "Cinzel", serif';
+      ctx.fillText("SHARING THE HAPPINESS", width / 2, 1260);
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '600 17px "Cinzel", serif';
+      ctx.fillText("MUHAMMED SHAHAS, MUHAMMED SHANIS", width / 2, 1295);
+      ctx.font = '400 15px "Cinzel", serif';
+      ctx.fillStyle = "#dfba73";
+      ctx.fillText("PUNATHIL FAMILY & PUTHIYOTTIL FAMILY", width / 2, 1325);
 
       return canvas;
     }
@@ -983,11 +734,12 @@
         }, 500);
 
       } catch (error) {
-        console.error("Card download failed:", error);
+        console.error("Card generation failed:", error);
+        alert("Could not complete download. Please try again.");
       } finally {
         btn.disabled = false;
         btnText.textContent = "Save Card";
-        btnSubtext.textContent = "Download High-Res Card";
+        btnSubtext.textContent = "Download Image";
         iconNormal.classList.remove("hidden");
         iconSpinner.classList.add("hidden");
       }
