@@ -2,400 +2,533 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Wedding Invitation | Muhammed Ajas & Saniya Sabah</title>
-  
-  <!-- Fonts -->
+
+  <!-- Google Fonts: Alex Brush & Playfair Display for unclipped calligraphy, Cinzel & Montserrat for classic elegance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;1,400;1,700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            desert: {
-              sand: '#fbf6f0',
-              linen: '#f3ece2',
-              rose: '#c49a82',
-              dustyRose: '#a8785e',
-              oud: '#6f4e37',
-              brass: '#8e6446',
-              deepText: '#3a271d',
-              cardBg: 'rgba(251, 246, 240, 0.85)'
-            }
-          },
-          fontFamily: {
-            serif: ['"Playfair Display"', 'serif'],
-            script: ['"Great Vibes"', 'cursive'],
-            arabic: ['Amiri', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
+    :root {
+      --gold-primary: #dfba73;
+      --gold-bright: #fff2cf;
+      --gold-deep: #b88d3c;
+    }
+
+    /* Charcoal slate marble texture with subtle gold dust vignette */
     body {
-      background: radial-gradient(circle at 15% 15%, #faf3eb 0%, #f1e4d6 45%, #e5d2c1 100%);
-      color: #3a271d;
+      background-color: #070908;
+      background-image: 
+        radial-gradient(ellipse 90% 55% at 50% -10%, rgba(35, 46, 40, 0.6) 0%, transparent 75%),
+        radial-gradient(ellipse 70% 50% at 85% 45%, rgba(28, 38, 32, 0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 65% 50% at 15% 80%, rgba(25, 33, 28, 0.55) 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(13, 17, 15, 0.95) 0%, #050706 100%),
+        repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.008) 0, rgba(255, 255, 255, 0.008) 1px, transparent 1px, transparent 18px);
+      color: #ebd9a0;
+      font-family: 'Montserrat', sans-serif;
       min-height: 100vh;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
     }
 
-    .rose-gradient-text {
-      background: linear-gradient(135deg, #8e6446 0%, #b07d5d 50%, #6f4e37 100%);
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-alex { font-family: 'Alex Brush', cursive; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+
+    /* Metallic Foil Shimmer Gradient with ZERO clipping */
+    .gold-foil-title {
+      background: linear-gradient(135deg, #fffbee 0%, #f7dfa5 22%, #dfba73 48%, #ffe299 72%, #b58934 92%, #8c6721 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 12px rgba(223, 186, 115, 0.28));
+      line-height: 1.45;
+      padding-top: 0.15em;
+      padding-bottom: 0.25em;
+      padding-left: 0.85rem;
+      padding-right: 0.85rem;
+      display: inline-block;
+      overflow: visible !important;
+      letter-spacing: 0.02em;
+    }
+
+    .gold-sub-foil {
+      background: linear-gradient(135deg, #faeed1 0%, #dfba73 50%, #b88d3c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .cashmere-card {
-      background: rgba(251, 246, 240, 0.88);
-      border: 1px solid rgba(196, 154, 130, 0.35);
+    /* Charcoal Invitation Card styling */
+    .charcoal-card {
+      background: linear-gradient(180deg, rgba(13, 17, 15, 0.96) 0%, rgba(7, 10, 9, 0.99) 100%);
+      border: 1px solid rgba(223, 186, 115, 0.45);
       box-shadow: 
-        0 18px 40px -10px rgba(111, 78, 55, 0.12),
-        0 4px 14px -2px rgba(196, 154, 130, 0.15);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+        0 25px 65px -15px rgba(0, 0, 0, 0.98), 
+        0 0 45px -5px rgba(223, 186, 115, 0.16),
+        inset 0 0 35px rgba(223, 186, 115, 0.05);
     }
 
-    /* Screen Slide-Up */
+    /* Screen Slide-Up Animation */
     #coverPage {
-      transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease-in-out;
+      transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.85s ease-in-out;
     }
     #coverPage.opened {
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
     }
+
+    /* Botanical line art styling */
+    .botanical-stroke {
+      stroke: #dfba73;
+      stroke-width: 1.2;
+      fill: none;
+      opacity: 0.45;
+    }
   </style>
 </head>
-<body class="font-sans antialiased relative selection:bg-desert-dustyRose selection:text-white">
+<body class="antialiased relative selection:bg-[#dfba73] selection:text-black">
 
-  <!-- Ambient Shading Orbs -->
-  <div class="fixed top-[-10%] left-[-10%] w-[580px] h-[580px] rounded-full bg-[#dfc5b4]/40 blur-[140px] pointer-events-none -z-10"></div>
-  <div class="fixed bottom-[-15%] right-[-10%] w-[640px] h-[640px] rounded-full bg-[#cbab97]/35 blur-[160px] pointer-events-none -z-10"></div>
-
-  <!-- Audio Element -->
+  <!-- Audio element with high-reliability wedding song fallbacks -->
   <audio id="bgAudio" loop preload="auto" playsinline>
     <source src="wedding-song.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-113318.mp3" type="audio/mpeg">
+    <source src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Canon_in_D_Major.ogg" type="audio/ogg">
   </audio>
 
   <!-- ==================================================== -->
-  <!-- 1. FIRST PAGE: ULTRA-CLEAN MINIMALIST MONOGRAM COVER -->
+  <!-- 1. COVER PAGE: MONOGRAM CIRCLE WITH LEAF BRANCH     -->
   <!-- ==================================================== -->
-  <div id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between bg-[#fbf6f0] px-6 py-12 select-none">
+  <div id="coverPage" class="fixed inset-0 z-50 flex flex-col items-center justify-between px-4 py-8 sm:py-12 select-none overflow-hidden bg-[#060807]">
     
-    <!-- Top Header -->
-    <div class="text-center pt-6 space-y-1">
-      <p class="font-arabic text-2xl rose-gradient-text leading-relaxed">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-      <p class="font-serif italic text-xs tracking-[0.35em] text-desert-dustyRose uppercase">Wedding Invitation</p>
+    <!-- Top Subtle Botanical Motif -->
+    <div class="w-full max-w-sm flex items-center justify-between opacity-40 pt-2">
+      <svg class="w-14 h-14" viewBox="0 0 100 100">
+        <path class="botanical-stroke" d="M10 90 Q 40 70 50 40 Q 60 70 90 90 M50 40 Q 30 20 50 10 Q 70 20 50 40" />
+      </svg>
+      <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#dfba73]/40 to-transparent mx-3"></div>
+      <svg class="w-14 h-14 transform -scale-x-100" viewBox="0 0 100 100">
+        <path class="botanical-stroke" d="M10 90 Q 40 70 50 40 Q 60 70 90 90 M50 40 Q 30 20 50 10 Q 70 20 50 40" />
+      </svg>
     </div>
 
-    <!-- Center Monogram -->
-    <div class="flex flex-col items-center cursor-pointer group" onclick="openInvitation()">
-      <div class="relative flex items-center justify-center select-none py-6">
-        <span class="font-serif italic text-7xl sm:text-8xl md:text-9xl font-normal tracking-tight -mr-2 rose-gradient-text">A</span>
-        <span class="font-script text-6xl sm:text-7xl md:text-8xl text-desert-rose opacity-90 mx-2">&amp;</span>
-        <span class="font-serif italic text-7xl sm:text-8xl md:text-9xl font-normal tracking-tight -ml-2 mt-8 rose-gradient-text">S</span>
-      </div>
+    <!-- Center Tap to Open Emblem -->
+    <div class="flex flex-col items-center cursor-pointer group my-auto text-center px-2" onclick="openInvitation()">
+      <p class="font-cinzel text-xs sm:text-sm tracking-[0.35em] text-[#dfba73]/90 uppercase mb-6 sm:mb-8 group-hover:text-[#fff4d1] transition-colors">
+        Wedding Invitation
+      </p>
 
-      <!-- Subtle Accent Divider -->
-      <div class="flex items-center justify-center space-x-3 text-desert-rose/60 pt-4">
-        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
-        <span class="text-xs">✦</span>
-        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
-      </div>
+      <!-- Circular Monogram Frame -->
+      <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border-2 border-[#dfba73]/80 flex items-center justify-center p-3 group-hover:scale-105 group-hover:border-[#fff4d1] transition-all duration-500 shadow-[0_0_55px_rgba(223,186,115,0.22)] bg-black/60">
+        <!-- Inner Border Ring -->
+        <div class="w-full h-full rounded-full border border-[#dfba73]/50 flex items-center justify-center relative">
+          <!-- Monogram Initials -->
+          <div class="flex items-center justify-center select-none pt-1">
+            <span class="font-playfair italic text-8xl sm:text-9xl text-[#faeed1] -mr-3 drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]">A</span>
+            <span class="font-playfair italic text-8xl sm:text-9xl text-[#dfba73] -ml-2 mt-5 sm:mt-6 drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]">S</span>
+          </div>
 
-      <!-- Minimal Tap Indicator -->
-      <div class="mt-8 text-center space-y-1">
-        <p class="font-serif italic text-xs tracking-[0.35em] text-desert-deepText uppercase group-hover:tracking-[0.45em] transition-all duration-300">
-          Tap To Enter
-        </p>
-        <p class="font-arabic italic text-xs text-desert-dustyRose">انقر لفتح الدعوة</p>
-      </div>
-    </div>
-
-    <!-- Bottom Controls -->
-    <div class="w-full max-w-xs flex items-center justify-between px-4 pb-2">
-      <!-- Music Toggle -->
-      <button id="splashMusicToggle" type="button" class="flex items-center space-x-2 text-desert-oud hover:text-desert-brass transition-all cursor-pointer" aria-label="Toggle music">
-        <div class="w-8 h-8 rounded-full border border-desert-rose/40 flex items-center justify-center bg-white/50 pointer-events-none">
-          <svg id="splashIconPlay" class="w-4 h-4 hidden text-desert-dustyRose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-          </svg>
-          <svg id="splashIconPause" class="w-4 h-4 block text-desert-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+          <!-- Olive Branch SVG on Right Side of Circle -->
+          <svg class="absolute -right-3 sm:-right-4 top-6 sm:top-8 w-14 sm:w-16 h-32 sm:h-36 text-[#dfba73]" viewBox="0 0 50 100" fill="currentColor">
+            <path d="M14,95 Q18,60 40,15" stroke="#dfba73" stroke-width="2.5" fill="none"/>
+            <path d="M22,76 C8,74 10,62 24,70 Z" />
+            <path d="M26,60 C40,58 38,46 27,54 Z" />
+            <path d="M28,45 C14,43 16,31 30,39 Z" />
+            <path d="M33,32 C47,30 45,18 34,26 Z" />
+            <path d="M37,19 C31,9 43,7 41,18 Z" />
           </svg>
         </div>
-        <span class="font-serif italic text-xs tracking-wider uppercase pointer-events-none">Sound</span>
+      </div>
+
+      <!-- Action Callout -->
+      <div class="mt-8 sm:mt-10 space-y-2">
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.45em] text-[#faeed1] uppercase group-hover:tracking-[0.55em] transition-all duration-300">
+          Touch To Open
+        </p>
+        <div class="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#dfba73] to-transparent mx-auto"></div>
+        <p class="text-[11px] text-[#dfba73]/70 font-mono tracking-wider pt-1">Music will play automatically</p>
+      </div>
+    </div>
+
+    <!-- Bottom Controls for Splash Screen -->
+    <div class="w-full max-w-sm flex items-center justify-between px-4 pb-2 text-xs font-cinzel text-[#dfba73]/80">
+      <button id="splashMusicToggle" type="button" class="flex items-center space-x-2 hover:text-white transition-all cursor-pointer">
+        <span class="w-8 h-8 rounded-full border border-[#dfba73]/50 flex items-center justify-center bg-black/50">
+          <svg id="splashIconPlay" class="w-3.5 h-3.5 hidden text-[#faeed1]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="splashIconPause" class="w-3.5 h-3.5 block text-[#dfba73]" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </span>
+        <span class="tracking-widest uppercase text-[11px]">Audio</span>
       </button>
 
-      <!-- Location Pin -->
-      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-desert-oud hover:text-desert-brass transition-all" aria-label="Open venue location">
-        <span class="font-serif italic text-xs tracking-wider uppercase">Venue</span>
-        <div class="w-8 h-8 rounded-full border border-desert-rose/40 flex items-center justify-center bg-white/50">
-          <svg class="w-4 h-4 text-desert-dustyRose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:text-white transition-all">
+        <span class="tracking-widest uppercase text-[11px]">Venue Map</span>
+        <span class="w-8 h-8 rounded-full border border-[#dfba73]/50 flex items-center justify-center bg-black/50">
+          <svg class="w-3.5 h-3.5 text-[#dfba73]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
           </svg>
-        </div>
+        </span>
       </a>
     </div>
+
   </div>
 
-  <!-- ==================================================== -->
-  <!-- 2. MAIN INVITATION SITE                              -->
-  <!-- ==================================================== -->
-
-  <button id="mainMusicToggle" type="button" class="fixed bottom-6 right-6 z-40 bg-desert-sand/95 border border-desert-rose/50 text-desert-oud p-3.5 rounded-full shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Toggle music">
-    <svg id="mainIconPlay" class="w-5 h-5 hidden text-desert-dustyRose pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-    </svg>
-    <svg id="mainIconPause" class="w-5 h-5 block text-desert-rose pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
-    </svg>
+  <!-- Floating Music Toggle -->
+  <button id="mainMusicToggle" type="button" class="fixed bottom-6 right-6 z-40 bg-[#101412]/95 border border-[#dfba73]/70 text-[#dfba73] p-3.5 rounded-full shadow-[0_4px_25px_rgba(0,0,0,0.9)] hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center justify-center" aria-label="Toggle audio">
+    <svg id="mainIconPlay" class="w-5 h-5 hidden text-[#faeed1] pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="mainIconPause" class="w-5 h-5 block text-[#dfba73] pointer-events-none animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
   </button>
 
-  <!-- Hero Section -->
-  <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative pt-12 pb-16">
-    <div class="space-y-6 max-w-2xl mx-auto">
+  <!-- ==================================================== -->
+  <!-- 2. MAIN CARD: EXACT INVITATION (NO SAVE THE DATE)    -->
+  <!-- ==================================================== -->
+  <main class="w-full max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-8 sm:space-y-10">
+
+    <!-- The Dedicated Wedding Invitation Card -->
+    <article class="w-full charcoal-card rounded-2xl p-6 sm:p-12 relative overflow-hidden text-center space-y-7 sm:space-y-9">
       
-      <div class="flex items-center justify-center space-x-3 text-desert-rose">
-        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
-        <span class="font-arabic text-2xl rose-gradient-text">﷽</span>
-        <span class="h-[1px] w-12 bg-desert-rose/40"></span>
-      </div>
+      <!-- Elegant Gold Corner Accents -->
+      <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#dfba73]/45 rounded-tl-sm pointer-events-none"></div>
+      <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#dfba73]/45 rounded-tr-sm pointer-events-none"></div>
+      <div class="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#dfba73]/45 rounded-bl-sm pointer-events-none"></div>
+      <div class="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-[#dfba73]/45 rounded-br-sm pointer-events-none"></div>
 
-      <p class="font-serif italic tracking-[0.25em] text-xs sm:text-sm text-desert-dustyRose uppercase">
-        Together with our beloved families
-      </p>
+      <!-- Subtle Botanical Line Art in Card Background -->
+      <svg class="absolute -top-12 -left-12 w-48 h-48 pointer-events-none opacity-20 text-[#dfba73]" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path stroke-width="1" d="M10,80 Q30,20 80,10 M30,20 Q60,60 90,40 M80,10 C60,40 40,60 10,80" />
+      </svg>
+      <svg class="absolute -bottom-16 -right-16 w-56 h-56 pointer-events-none opacity-25 text-[#dfba73]" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path stroke-width="1" d="M20,90 Q40,30 90,20 M40,30 Q70,70 100,50 M90,20 C70,50 50,70 20,90" />
+      </svg>
 
-      <!-- Couple Names & Parents -->
-      <div class="space-y-3 py-4">
-        <div>
-          <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
-            Muhammed Ajas
-          </h1>
-          <p class="font-arabic text-2xl rose-gradient-text">محمد أجاس</p>
-          <p class="font-serif italic text-xs sm:text-sm text-desert-oud/80 mt-1">
-            Son of Mr. Abdul Azeez &amp; Mrs. Sufaira
-          </p>
-        </div>
-        
-        <div class="flex items-center justify-center space-x-4 py-2">
-          <span class="h-[1px] w-12 bg-desert-rose/40"></span>
-          <span class="font-script text-3xl text-desert-rose">&amp;</span>
-          <span class="h-[1px] w-12 bg-desert-rose/40"></span>
-        </div>
+      <!-- 1. Bismillah / Invocation -->
+      <header class="space-y-1.5 border-b border-[#dfba73]/25 pb-6 relative z-10">
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-[#dfba73] font-semibold uppercase">
+          IN THE NAME OF ALLAH
+        </p>
+        <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.24em] text-[#dfba73]/80 uppercase">
+          THE MOST BENEFICENT AND THE MOST MERCIFUL
+        </p>
+      </header>
 
-        <div>
-          <h1 class="font-serif italic text-4xl sm:text-6xl text-desert-deepText font-normal">
-            Saniya Sabah
-          </h1>
-          <p class="font-arabic text-2xl rose-gradient-text">سانية صباح</p>
-          <p class="font-serif italic text-xs sm:text-sm text-desert-oud/80 mt-1">
-            Daughter of Mr. Sabah &amp; Mrs. Faseema
-          </p>
-        </div>
-      </div>
-
-      <p class="font-serif italic text-desert-oud text-base md:text-lg max-w-md mx-auto leading-relaxed">
-        Request the pleasure of your presence to celebrate our marriage ceremony.
-      </p>
-
-      <!-- Date Badge (Updated to 4:30 PM) -->
-      <div class="inline-block cashmere-card px-7 py-2.5 rounded-full mt-4">
-        <p class="font-serif italic text-sm text-desert-deepText tracking-wider">
-          Saturday, 21 November 2026 • 4:30 PM
+      <!-- 2. Parents Lineage & Host Details -->
+      <div class="space-y-2 max-w-md mx-auto relative z-10">
+        <h3 class="font-cinzel text-base sm:text-lg font-bold tracking-wider text-[#faeed1]">
+          ABDUL AZEEZ &amp; SUFAIRA AZEEZ
+        </h3>
+        <p class="font-cinzel text-xs tracking-widest text-[#dfba73] uppercase">
+          PUNATHIL HOUSE, PURAMERI
+        </p>
+        <p class="font-mono text-xs text-[#ebd9a0] tracking-wider pt-0.5">
+          MOB : 9496164049
+        </p>
+        <p class="font-cinzel text-[11px] sm:text-xs text-[#faeed1]/80 tracking-[0.18em] uppercase pt-4 leading-relaxed">
+          REQUEST THE PLEASURE OF YOUR PRESENCE ON THE OCCASION OF THE MARRIAGE OF OUR SON
         </p>
       </div>
 
-      <!-- Scroll Prompt -->
-      <div class="pt-10">
-        <a href="#countdown" class="inline-flex flex-col items-center text-xs tracking-widest text-desert-dustyRose hover:text-desert-deepText uppercase transition-colors">
-          <span class="font-serif italic">Scroll to Explore</span>
-          <svg class="w-4 h-4 mt-2 animate-bounce text-desert-rose" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-          </svg>
-        </a>
+      <!-- 3. Groom & Bride Names - Completely unclipped typography -->
+      <section class="py-4 sm:py-6 border-y border-[#dfba73]/25 space-y-6 sm:space-y-7 relative z-10">
+        
+        <!-- Groom: Muhammed Ajas -->
+        <div class="space-y-1">
+          <div class="overflow-visible px-2 sm:px-4">
+            <h1 class="font-alex text-5xl sm:text-7xl lg:text-8xl gold-foil-title select-none">
+              Muhammed Ajas
+            </h1>
+          </div>
+          <p class="font-cinzel text-[11px] sm:text-xs text-[#dfba73] tracking-[0.18em] uppercase leading-relaxed max-w-md mx-auto pt-1">
+            (GRAND S/O. LATE ANDRU HAJI &amp; KUNHI MOIDU)
+          </p>
+        </div>
+
+        <!-- Ampersand -->
+        <div class="flex items-center justify-center space-x-4 py-0.5">
+          <span class="h-[1px] w-12 sm:w-16 bg-[#dfba73]/40"></span>
+          <span class="font-playfair italic text-2xl sm:text-3xl text-[#dfba73] leading-none">&amp;</span>
+          <span class="h-[1px] w-12 sm:w-16 bg-[#dfba73]/40"></span>
+        </div>
+
+        <!-- Bride: Saniya Sabah -->
+        <div class="space-y-1">
+          <div class="overflow-visible px-2 sm:px-4">
+            <h1 class="font-alex text-5xl sm:text-7xl lg:text-8xl gold-foil-title select-none">
+              Saniya Sabah
+            </h1>
+          </div>
+          <p class="font-cinzel text-[11px] sm:text-xs text-[#dfba73] tracking-[0.18em] uppercase leading-relaxed max-w-md mx-auto pt-1">
+            (D/O. SABAH T.K &amp; FASEEMA RAHIDA
+          </p>
+          <p class="font-cinzel text-[10px] sm:text-[11px] text-[#dfba73]/80 tracking-[0.16em] uppercase">
+            THOTTATHAM KUNNUMMAL, EDACHERI)
+          </p>
+        </div>
+
+      </section>
+
+      <!-- 4. Three-Column Schedule Box (Saturday 5:00 PM | 21 Nov 2026 | Punathil House) -->
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center text-center py-4 sm:py-5 bg-black/45 rounded-xl border border-[#dfba73]/35 px-4 relative z-10">
+        
+        <!-- Col 1: Day & Reception Time -->
+        <div class="py-2 space-y-1">
+          <div class="w-6 h-6 mx-auto text-[#dfba73] mb-1">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <p class="font-cinzel text-xs sm:text-sm font-semibold text-[#faeed1] tracking-wider uppercase">SATURDAY</p>
+          <p class="font-cinzel text-xs sm:text-sm text-[#dfba73] font-medium">5.00 PM</p>
+        </div>
+
+        <!-- Col 2: Date & Islamic Date -->
+        <div class="py-2 sm:border-x border-y sm:border-y-0 border-[#dfba73]/30 space-y-0.5">
+          <p class="font-cinzel text-4xl sm:text-5xl font-light text-[#faeed1] leading-none">21</p>
+          <p class="font-cinzel text-xs sm:text-sm font-semibold tracking-widest text-[#dfba73] uppercase">NOVEMBER 2026</p>
+          <p class="text-[10px] text-[#dfba73]/80 font-mono tracking-wider pt-0.5">11-JAMADUL AKHIR 1448</p>
+        </div>
+
+        <!-- Col 3: Venue -->
+        <div class="py-2 space-y-1">
+          <div class="w-6 h-6 mx-auto text-[#dfba73] mb-1">
+            <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <p class="font-cinzel text-xs sm:text-sm font-semibold text-[#faeed1] tracking-wider uppercase leading-tight">PUNATHIL HOUSE</p>
+          <p class="font-cinzel text-xs sm:text-sm text-[#dfba73]">PURAMERI</p>
+        </div>
+
+      </section>
+
+      <!-- 5. Nikah Special Timing Highlight & Sharing Happiness -->
+      <footer class="pt-2 space-y-4 relative z-10">
+        <div class="inline-block px-6 py-2 rounded-full border border-[#dfba73]/60 bg-[#dfba73]/10">
+          <p class="font-cinzel text-xs sm:text-sm font-bold tracking-[0.2em] text-[#faeed1] uppercase">
+            NIKAH: 21 SATURDAY @ 6.30 PM
+          </p>
+        </div>
+
+        <div class="text-[#dfba73] text-sm">✦ ❤ ✦</div>
+
+        <div class="space-y-1.5 pt-1">
+          <p class="font-cinzel text-[11px] tracking-[0.25em] text-[#dfba73]/80 uppercase">SHARING THE HAPPINESS</p>
+          <p class="font-cinzel text-xs sm:text-sm font-bold text-[#faeed1] tracking-wider">MUHAMMED SHAHAS, MUHAMMED SHANIS</p>
+          <p class="font-cinzel text-[11px] sm:text-xs text-[#dfba73] tracking-wider">PUNATHIL FAMILY &amp; PUTHIYOTTIL FAMILY</p>
+        </div>
+      </footer>
+
+    </article>
+
+    <!-- Live Countdown Section -->
+    <section class="w-full charcoal-card rounded-2xl p-6 sm:p-8 text-center space-y-4">
+      <div class="space-y-1">
+        <h3 class="font-cinzel text-base sm:text-lg gold-sub-foil tracking-widest uppercase">
+          Countdown to our Blessed Day
+        </h3>
+        <p class="text-xs text-[#dfba73]/70 font-cinzel">Saturday, 21 November 2026 @ 5:00 PM</p>
       </div>
-    </div>
-  </header>
 
-  <!-- Countdown Section -->
-  <section id="countdown" class="py-16 px-4 border-y border-desert-rose/25 bg-desert-linen/40">
-    <div class="max-w-xl mx-auto text-center">
-      <h2 class="font-serif italic text-2xl md:text-3xl rose-gradient-text">
-        Countdown
-      </h2>
-      <p class="font-serif italic text-xs text-desert-dustyRose tracking-wider uppercase mt-1 mb-8">
-        Until our blessed day
-      </p>
-
-      <div class="grid grid-cols-4 gap-3 md:gap-6">
-        <div class="cashmere-card p-4 rounded-xl text-center">
-          <span id="days" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
-          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Days</span>
+      <div class="grid grid-cols-4 gap-2 sm:gap-4 pt-2 max-w-lg mx-auto">
+        <div class="bg-black/50 border border-[#dfba73]/30 p-3 sm:p-4 rounded-xl">
+          <span id="days" class="font-cinzel text-2xl sm:text-4xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[10px] sm:text-xs text-[#dfba73]/80 uppercase mt-1 block">Days</span>
         </div>
-        <div class="cashmere-card p-4 rounded-xl text-center">
-          <span id="hours" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
-          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Hours</span>
+        <div class="bg-black/50 border border-[#dfba73]/30 p-3 sm:p-4 rounded-xl">
+          <span id="hours" class="font-cinzel text-2xl sm:text-4xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[10px] sm:text-xs text-[#dfba73]/80 uppercase mt-1 block">Hours</span>
         </div>
-        <div class="cashmere-card p-4 rounded-xl text-center">
-          <span id="minutes" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
-          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Minutes</span>
+        <div class="bg-black/50 border border-[#dfba73]/30 p-3 sm:p-4 rounded-xl">
+          <span id="minutes" class="font-cinzel text-2xl sm:text-4xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[10px] sm:text-xs text-[#dfba73]/80 uppercase mt-1 block">Mins</span>
         </div>
-        <div class="cashmere-card p-4 rounded-xl text-center">
-          <span id="seconds" class="font-serif italic text-2xl md:text-4xl text-desert-deepText font-semibold block">--</span>
-          <span class="font-serif italic text-[11px] uppercase tracking-wider text-desert-dustyRose mt-1 block">Seconds</span>
+        <div class="bg-black/50 border border-[#dfba73]/30 p-3 sm:p-4 rounded-xl">
+          <span id="seconds" class="font-cinzel text-2xl sm:text-4xl text-[#faeed1] block font-light">--</span>
+          <span class="font-cinzel text-[10px] sm:text-xs text-[#dfba73]/80 uppercase mt-1 block">Secs</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Event Details -->
-  <section id="details" class="py-20 px-4 max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="font-serif italic text-3xl rose-gradient-text">
-        Event Details
-      </h2>
-      <div class="h-[1px] w-16 bg-desert-rose/40 mx-auto mt-2"></div>
-    </div>
+    <!-- Venue & Location Section -->
+    <section class="w-full charcoal-card rounded-2xl p-6 sm:p-8 text-center space-y-6">
+      <div class="space-y-1">
+        <h3 class="font-cinzel text-lg sm:text-xl gold-sub-foil tracking-widest uppercase">
+          Venue &amp; Location
+        </h3>
+        <p class="text-xs sm:text-sm text-[#faeed1]/80 max-w-md mx-auto">
+          Punathil House, Purameri, Kerala. Scan the QR code or tap the button to navigate with Google Maps.
+        </p>
+      </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Ceremony Card (Updated to 4:30 PM) -->
-      <div class="cashmere-card rounded-2xl p-8 text-center space-y-3">
-        <p class="font-arabic text-xl rose-gradient-text">عقد النكاح</p>
-        <h3 class="font-serif italic text-2xl text-desert-deepText">Nikah Ceremony</h3>
-        <p class="font-serif italic text-sm text-desert-oud">Saturday, 21 November 2026</p>
-        <div class="inline-block border border-desert-rose/40 bg-white/80 text-desert-deepText font-serif italic text-xs font-semibold px-5 py-1.5 rounded-full shadow-inner">
-          4:30 PM
+      <!-- QR Box mirroring the physical card -->
+      <div class="flex flex-col items-center justify-center pt-2">
+        <div class="p-3.5 bg-[#fbf7ee] border-2 border-[#dfba73] rounded-2xl shadow-xl inline-block">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
+               alt="Venue Map QR Code" 
+               class="w-36 h-36 mx-auto rounded" 
+               loading="lazy" />
+          <p class="font-cinzel text-xs font-bold text-[#27231c] tracking-[0.25em] mt-2 uppercase">
+            LOCATION
+          </p>
         </div>
       </div>
 
-      <!-- Venue Card -->
-      <div class="cashmere-card rounded-2xl p-8 text-center space-y-3">
-        <p class="font-arabic text-xl rose-gradient-text">مكان الحفل</p>
-        <h3 class="font-serif italic text-2xl text-desert-deepText">Punathil House</h3>
-        <p class="font-serif italic text-base text-desert-dustyRose font-medium">Purameri, Kerala</p>
-        <p class="font-serif italic text-xs text-desert-oud/80">Join us with your loved ones</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Location & Dynamic QR -->
-  <section id="location" class="py-20 px-4 border-y border-desert-rose/25 bg-desert-linen/40 text-center">
-    <div class="max-w-xl mx-auto space-y-6">
-      <h2 class="font-serif italic text-3xl rose-gradient-text">
-        Location &amp; Directions
-      </h2>
-      <p class="font-serif italic text-desert-oud text-sm">
-        Punathil House, Purameri. Scan below or click the button to navigate directly.
-      </p>
-
-      <div>
+      <div class="pt-2">
         <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
            target="_blank" 
            rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 bg-gradient-to-r from-desert-rose to-desert-dustyRose hover:brightness-105 text-white font-serif italic text-sm font-semibold px-8 py-3 rounded-full transition-all shadow-md shadow-desert-dustyRose/25">
+           class="inline-flex items-center gap-2 bg-gradient-to-r from-[#b68b37] via-[#dfba73] to-[#b68b37] hover:brightness-110 text-black font-cinzel text-xs font-bold px-8 py-3.5 rounded-full transition-all shadow-[0_0_25px_rgba(223,186,115,0.3)]">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
-          Open in Google Maps
+          OPEN IN GOOGLE MAPS
         </a>
       </div>
+    </section>
 
-      <div class="pt-4 inline-block">
-        <div class="p-3 bg-white border border-desert-rose/40 rounded-2xl shadow-lg">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" 
-               alt="Location QR Code" 
-               class="w-32 h-32 mx-auto rounded-lg" 
-               loading="lazy" />
-        </div>
-        <p class="font-serif italic text-xs text-desert-dustyRose mt-3">Scan with mobile to navigate</p>
+    <!-- Action Buttons: Call & Download -->
+    <section class="w-full pt-1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        
+        <!-- Call Host -->
+        <a href="tel:9496164049" class="charcoal-card hover:border-[#dfba73] p-4 rounded-xl flex items-center justify-center space-x-3 transition-all cursor-pointer">
+          <div class="p-2.5 rounded-lg bg-[#dfba73]/15 text-[#dfba73]">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <p class="font-cinzel text-xs font-semibold text-[#faeed1]">Call Host</p>
+            <p class="text-[11px] text-[#dfba73]">9496164049</p>
+          </div>
+        </a>
+
+        <!-- Download Printable Card -->
+        <button id="downloadCardBtn" onclick="downloadInvitationCard()" type="button" class="charcoal-card hover:border-[#dfba73] p-4 rounded-xl flex items-center justify-center space-x-3 transition-all cursor-pointer">
+          <div class="p-2.5 rounded-lg bg-[#dfba73]/15 text-[#dfba73]">
+            <svg id="dlIconNormal" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <svg id="dlIconSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </div>
+          <div class="text-left">
+            <p id="dlBtnText" class="font-cinzel text-xs font-semibold text-[#faeed1]">Save Card</p>
+            <p id="dlBtnSubtext" class="text-[11px] text-[#dfba73]">Download High-Res Image</p>
+          </div>
+        </button>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Warm Note -->
-  <section class="py-16 px-4 text-center">
-    <div class="max-w-md mx-auto space-y-2">
-      <p class="font-arabic text-lg rose-gradient-text">بارك الله لكما وبارك عليكما وجمع بينكما في خير</p>
-      <p class="font-serif italic text-xl text-desert-deepText">
-        "Your presence and heartfelt prayers will make our day truly special."
+    <!-- Footer -->
+    <footer class="pt-8 pb-12 text-center space-y-2 border-t border-[#dfba73]/20">
+      <p class="font-cinzel text-xs text-[#dfba73] tracking-[0.2em] uppercase">
+        With Best Compliments
       </p>
-    </div>
-  </section>
+      <p class="font-cinzel text-sm font-semibold text-[#faeed1]">
+        Punathil Family &amp; Puthiyottil Family
+      </p>
+      <p class="text-[11px] text-[#dfba73]/70 font-mono">
+        21 November 2026 • Purameri, Kerala
+      </p>
+    </footer>
 
-  <!-- Action Buttons: Venue Directions & Download Card -->
-  <section class="pb-16 px-4 max-w-xl mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      
-      <!-- Venue Directions Link -->
-      <a href="https://maps.app.goo.gl/zsi3UG3jH7H6Ahsi6" target="_blank" rel="noopener noreferrer" class="cashmere-card hover:bg-white p-4 rounded-xl flex items-center justify-center space-x-3 transition-all shadow-sm text-center">
-        <div class="p-2.5 rounded-lg bg-desert-rose/15 text-desert-oud shrink-0">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-          </svg>
-        </div>
-        <div class="text-left">
-          <p class="font-serif italic text-sm font-semibold text-desert-deepText">Venue Directions</p>
-          <p class="font-serif italic text-xs text-desert-dustyRose">Punathil House, Purameri</p>
-        </div>
-      </a>
+  </main>
 
-      <!-- Download Invitation Card Button -->
-      <button id="downloadCardBtn" onclick="downloadInvitationCard()" type="button" class="cashmere-card hover:bg-white p-4 rounded-xl flex items-center justify-center space-x-3 transition-all shadow-sm text-center cursor-pointer">
-        <div class="p-2.5 rounded-lg bg-desert-rose/15 text-desert-oud shrink-0">
-          <svg id="dlIconNormal" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-          </svg>
-          <svg id="dlIconSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-        </div>
-        <div class="text-left">
-          <p id="dlBtnText" class="font-serif italic text-sm font-semibold text-desert-deepText">Download Card</p>
-          <p id="dlBtnSubtext" class="font-serif italic text-xs text-desert-dustyRose">Save Invitation Card</p>
-        </div>
-      </button>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-12 border-t border-desert-rose/25 text-center space-y-1">
-    <p class="font-serif italic text-xs tracking-widest text-desert-dustyRose uppercase">With Warm Regards</p>
-    <p class="font-serif italic text-xl rose-gradient-text font-medium">Punathil Family</p>
-  </footer>
-
-  <!-- Unified Audio Engine, Countdown, & Direct-Canvas Downloader -->
   <script>
     const coverPage = document.getElementById("coverPage");
     const audio = document.getElementById("bgAudio");
 
-    // 46% Maximum Volume Limit Guard
-    const MAX_VOL = 0.46;
-    audio.volume = MAX_VOL;
-    audio.addEventListener("volumechange", () => {
-      if (audio.volume > MAX_VOL) {
-        audio.volume = MAX_VOL;
+    // ==========================================
+    // 1. DUAL AUDIO ENGINE (Audio Tag + WebAudio Synthesizer Fallback)
+    // ==========================================
+    let isSynthesizerActive = false;
+    let synthTimer = null;
+    let audioCtx = null;
+    let masterGain = null;
+
+    // Soft classical harp/bell melody notes (Hz)
+    const melodyNotes = [
+      261.63, 329.63, 392.00, 523.25, 493.88, 392.00, 329.63, 293.66,
+      329.63, 392.00, 440.00, 523.25, 392.00, 329.63, 261.63
+    ];
+    let noteIndex = 0;
+
+    function initWebAudioSynth() {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        audioCtx = new AudioContextClass();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+      } catch (e) {
+        console.warn("Web Audio not supported", e);
       }
-    });
+    }
+
+    function playSynthNote() {
+      if (!audioCtx || !isSynthesizerActive) return;
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const osc = audioCtx.createOscillator();
+      const noteGain = audioCtx.createGain();
+      
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(melodyNotes[noteIndex % melodyNotes.length], audioCtx.currentTime);
+      noteIndex++;
+
+      const now = audioCtx.currentTime;
+      noteGain.gain.setValueAtTime(0.001, now);
+      noteGain.gain.exponentialRampToValueAtTime(0.15, now + 0.08);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+
+      osc.connect(noteGain);
+      noteGain.connect(masterGain);
+
+      osc.start(now);
+      osc.stop(now + 1.25);
+    }
+
+    function startSynthesizer() {
+      if (!audioCtx) initWebAudioSynth();
+      if (!audioCtx) return;
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      isSynthesizerActive = true;
+      if (synthTimer) clearInterval(synthTimer);
+      playSynthNote();
+      synthTimer = setInterval(playSynthNote, 950);
+      renderAudioButtons(true);
+    }
+
+    function stopSynthesizer() {
+      isSynthesizerActive = false;
+      if (synthTimer) {
+        clearInterval(synthTimer);
+        synthTimer = null;
+      }
+      renderAudioButtons(false);
+    }
+
+    // Standard HTML5 Audio safe controller with seamless fallback
+    const MAX_VOLUME = 0.50;
+    audio.volume = MAX_VOLUME;
 
     const splashIconPlay = document.getElementById("splashIconPlay");
     const splashIconPause = document.getElementById("splashIconPause");
     const mainIconPlay = document.getElementById("mainIconPlay");
     const mainIconPause = document.getElementById("mainIconPause");
 
-    function renderIcons(isPlaying) {
+    function renderAudioButtons(isPlaying) {
       if (isPlaying) {
         splashIconPlay.classList.remove("hidden");
         splashIconPause.classList.add("hidden");
@@ -409,29 +542,24 @@
       }
     }
 
-    audio.addEventListener("play", () => renderIcons(true));
-    audio.addEventListener("playing", () => renderIcons(true));
-    audio.addEventListener("pause", () => renderIcons(false));
-    audio.addEventListener("ended", () => renderIcons(false));
+    audio.addEventListener("play", () => renderAudioButtons(true));
+    audio.addEventListener("pause", () => {
+      if (!isSynthesizerActive) renderAudioButtons(false);
+    });
 
     function playAudioSafe() {
-      audio.volume = MAX_VOL;
-      const promise = audio.play();
-      if (promise !== undefined) {
-        promise.catch((err) => {
-          console.warn("Playback paused until interaction:", err);
-          renderIcons(false);
+      audio.volume = MAX_VOLUME;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          renderAudioButtons(true);
+        }).catch((err) => {
+          console.log("Audio file blocked or missing, running synthesizer fallback:", err);
+          startSynthesizer();
         });
+      } else {
+        startSynthesizer();
       }
-    }
-
-    function pauseAudio() {
-      audio.pause();
-    }
-
-    function openInvitation() {
-      coverPage.classList.add("opened");
-      playAudioSafe();
     }
 
     function toggleAudio(e) {
@@ -439,18 +567,29 @@
         e.preventDefault();
         e.stopPropagation();
       }
-      if (audio.paused) {
-        playAudioSafe();
+
+      if (isSynthesizerActive) {
+        stopSynthesizer();
+      } else if (!audio.paused) {
+        audio.pause();
       } else {
-        pauseAudio();
+        playAudioSafe();
       }
     }
 
     document.getElementById("splashMusicToggle").onclick = toggleAudio;
     document.getElementById("mainMusicToggle").onclick = toggleAudio;
 
-    // Live Countdown targeting 4:30 PM IST on 21 Nov 2026
-    const targetDate = new Date("2026-11-21T16:30:00+05:30").getTime();
+    function openInvitation() {
+      coverPage.classList.add("opened");
+      playAudioSafe();
+    }
+
+    // ==========================================
+    // 2. LIVE COUNTDOWN ENGINE
+    // ==========================================
+    // Target: 21 November 2026, 5:00 PM IST
+    const targetDate = new Date("2026-11-21T17:00:00+05:30").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -471,200 +610,131 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Helper: Rounded Rectangle generator for Canvas 2D
-    function drawRoundedRect(ctx, x, y, width, height, radius) {
-      ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.lineTo(x + width - radius, y);
-      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-      ctx.lineTo(x + width, y + height - radius);
-      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-      ctx.lineTo(x + radius, y + height);
-      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-      ctx.lineTo(x, y + radius);
-      ctx.quadraticCurveTo(x, y, x + radius, y);
-      ctx.closePath();
-    }
-
-    // Direct High-Resolution Canvas Card Generator with Parents Details & Updated 4:30 PM Time
+    // ==========================================
+    // 3. CANVAS HIGH-RESOLUTION CARD GENERATOR
+    // ==========================================
     async function generateCardCanvas() {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       
-      // High-resolution 1200 x 1850 printable card
       const width = 1200;
       const height = 1850;
       canvas.width = width;
       canvas.height = height;
 
-      // 1. Base Warm Background
-      const bgGrad = ctx.createRadialGradient(width / 2, height / 2, 50, width / 2, height / 2, width * 0.75);
-      bgGrad.addColorStop(0, "#ffffff");
-      bgGrad.addColorStop(1, "#f7f1e7");
-      ctx.fillStyle = bgGrad;
+      // Dark slate background
+      ctx.fillStyle = "#090c0a";
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Outer Border
-      ctx.strokeStyle = "#c49a82";
-      ctx.lineWidth = 4;
-      ctx.strokeRect(50, 50, width - 100, height - 100);
+      // Outer & Inner Gold Borders
+      ctx.strokeStyle = "#dfba73";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(40, 40, width - 80, height - 80);
 
-      // 3. Inner Decorative Border
-      ctx.strokeStyle = "rgba(196, 154, 130, 0.45)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(66, 66, width - 132, height - 132);
-
-      // Corner Accents
-      const drawCorner = (cx, cy) => {
-        ctx.fillStyle = "#a8785e";
-        ctx.beginPath();
-        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
-        ctx.fill();
-      };
-      drawCorner(66, 66);
-      drawCorner(width - 66, 66);
-      drawCorner(66, height - 66);
-      drawCorner(width - 66, height - 66);
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.35)";
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(55, 55, width - 110, height - 110);
 
       ctx.textAlign = "center";
 
-      // 4. Bismillah (Arabic)
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = '52px "Amiri", serif';
-      ctx.fillText("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", width / 2, 175);
+      // Islamic Invocation
+      ctx.fillStyle = "#dfba73";
+      ctx.font = '600 20px "Cinzel", serif';
+      ctx.fillText("IN THE NAME OF ALLAH", width / 2, 140);
+      ctx.font = '500 15px "Cinzel", serif';
+      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
+      ctx.fillText("THE MOST BENEFICENT AND THE MOST MERCIFUL", width / 2, 172);
 
-      // Divider below Bismillah
-      ctx.strokeStyle = "rgba(196, 154, 130, 0.6)";
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(width / 2 - 120, 220);
-      ctx.lineTo(width / 2 + 120, 220);
-      ctx.stroke();
+      // Parents details
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '700 26px "Cinzel", serif';
+      ctx.fillText("ABDUL AZEEZ & SUFAIRA AZEEZ", width / 2, 250);
+      ctx.font = '500 17px "Montserrat", sans-serif';
+      ctx.fillStyle = "#dfba73";
+      ctx.fillText("PUNATHIL HOUSE, PURAMERI", width / 2, 285);
+      ctx.fillText("MOB : 9496164049", width / 2, 315);
 
-      ctx.fillStyle = "#c49a82";
-      ctx.font = '22px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText("✦", width / 2, 226);
+      ctx.font = '500 15px "Cinzel", serif';
+      ctx.fillStyle = "rgba(250, 238, 209, 0.85)";
+      ctx.fillText("REQUEST THE PLEASURE OF YOUR PRESENCE ON THE OCCASION", width / 2, 375);
+      ctx.fillText("OF THE MARRIAGE OF OUR SON", width / 2, 405);
 
-      // 5. Title & Invitation Notice
-      ctx.fillStyle = "#a8785e";
-      ctx.font = 'italic 600 22px "Playfair Display", serif';
-      ctx.letterSpacing = "6px";
-      ctx.fillText("WEDDING INVITATION", width / 2, 280);
-      ctx.letterSpacing = "0px";
+      // Groom (Alex Brush script)
+      ctx.fillStyle = "#ebd9a0";
+      ctx.font = '700 86px "Alex Brush", cursive';
+      ctx.fillText("Muhammed Ajas", width / 2, 530);
 
-      ctx.fillStyle = "#8e6446";
-      ctx.font = 'italic 400 26px "Playfair Display", serif';
-      ctx.fillText("Together with our beloved families", width / 2, 335);
+      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
+      ctx.font = '600 15px "Cinzel", serif';
+      ctx.fillText("(GRAND S/O. LATE ANDRU HAJI & KUNHI MOIDU)", width / 2, 575);
 
-      // 6. Monogram (A & S)
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 115px "Playfair Display", serif';
-      ctx.fillText("A", width / 2 - 80, 485);
+      // Ampersand
+      ctx.fillStyle = "#dfba73";
+      ctx.font = 'italic 34px "Playfair Display", serif';
+      ctx.fillText("&", width / 2, 635);
 
-      ctx.fillStyle = "#c49a82";
-      ctx.font = '100px "Great Vibes", cursive';
-      ctx.fillText("&", width / 2, 485);
+      // Bride (Alex Brush script)
+      ctx.fillStyle = "#ebd9a0";
+      ctx.font = '700 86px "Alex Brush", cursive';
+      ctx.fillText("Saniya Sabah", width / 2, 730);
 
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 115px "Playfair Display", serif';
-      ctx.fillText("S", width / 2 + 80, 485);
+      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
+      ctx.font = '600 15px "Cinzel", serif';
+      ctx.fillText("(D/O. SABAH T.K & FASEEMA RAHIDA)", width / 2, 775);
+      ctx.fillText("THOTTATHAM KUNNUMMAL, EDACHERI", width / 2, 805);
 
-      // 7. Groom Name & Parents
-      ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 500 58px "Playfair Display", serif';
-      ctx.fillText("Muhammed Ajas", width / 2, 605);
-
-      ctx.fillStyle = "#8e6446";
-      ctx.font = '36px "Amiri", serif';
-      ctx.fillText("محمد أجاس", width / 2, 660);
-
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 23px "Playfair Display", serif';
-      ctx.fillText("Son of Mr. Abdul Azeez & Mrs. Sufaira", width / 2, 705);
-
-      // Ampersand between Names
-      ctx.fillStyle = "#a8785e";
-      ctx.font = '52px "Great Vibes", cursive';
-      ctx.fillText("&", width / 2, 775);
-
-      // 8. Bride Name & Parents
-      ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 500 58px "Playfair Display", serif';
-      ctx.fillText("Saniya Sabah", width / 2, 850);
-
-      ctx.fillStyle = "#8e6446";
-      ctx.font = '36px "Amiri", serif';
-      ctx.fillText("سانية صباح", width / 2, 905);
-
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 400 23px "Playfair Display", serif';
-      ctx.fillText("Daughter of Mr. Sabah & Mrs. Faseema", width / 2, 950);
-
-      // 9. Invitation Text
-      ctx.fillStyle = "#8e6446";
-      ctx.font = 'italic 400 26px "Playfair Display", serif';
-      ctx.fillText("Cordially invite you to celebrate the joyous occasion", width / 2, 1050);
-      ctx.fillText("of our Nikah ceremony", width / 2, 1090);
-
-      // 10. Event Details Card Box
-      const boxW = 860;
-      const boxH = 250;
-      const boxX = (width - boxW) / 2;
-      const boxY = 1145;
-
-      ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
-      drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 20);
-      ctx.fill();
-
-      ctx.strokeStyle = "rgba(196, 154, 130, 0.45)";
+      // Schedule Box
+      ctx.fillStyle = "rgba(18, 24, 21, 0.9)";
+      ctx.fillRect(150, 880, 900, 310);
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.45)";
       ctx.lineWidth = 2;
-      drawRoundedRect(ctx, boxX, boxY, boxW, boxH, 20);
-      ctx.stroke();
+      ctx.strokeRect(150, 880, 900, 310);
 
-      // Card Content (Updated to 4:30 PM)
-      ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 600 34px "Playfair Display", serif';
-      ctx.fillText("Saturday, 21 November 2026", width / 2, 1210);
+      // Column 1
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '700 24px "Cinzel", serif';
+      ctx.fillText("SATURDAY", 300, 1010);
+      ctx.fillStyle = "#dfba73";
+      ctx.font = '600 20px "Cinzel", serif';
+      ctx.fillText("5.00 PM", 300, 1050);
 
-      ctx.fillStyle = "#a8785e";
-      ctx.font = 'italic 500 26px "Playfair Display", serif';
-      ctx.fillText("Nikah Ceremony • 4:30 PM", width / 2, 1255);
+      // Column 2
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '300 82px "Cinzel", serif';
+      ctx.fillText("21", width / 2, 1005);
+      ctx.font = '700 22px "Cinzel", serif';
+      ctx.fillStyle = "#dfba73";
+      ctx.fillText("NOVEMBER 2026", width / 2, 1050);
+      ctx.font = '500 14px "Montserrat", sans-serif';
+      ctx.fillText("11-JAMADUL AKHIR 1448", width / 2, 1085);
 
-      // Box Divider
-      ctx.strokeStyle = "rgba(196, 154, 130, 0.4)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(width / 2 - 100, 1290);
-      ctx.lineTo(width / 2 + 100, 1290);
-      ctx.stroke();
+      // Column 3
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '700 24px "Cinzel", serif';
+      ctx.fillText("PUNATHIL HOUSE", 900, 1010);
+      ctx.fillStyle = "#dfba73";
+      ctx.font = '600 20px "Cinzel", serif';
+      ctx.fillText("PURAMERI", 900, 1050);
 
-      ctx.fillStyle = "#3a271d";
-      ctx.font = 'italic 600 32px "Playfair Display", serif';
-      ctx.fillText("Punathil House", width / 2, 1335);
+      // Nikah Timing
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '700 28px "Cinzel", serif';
+      ctx.fillText("NIKAH: 21 SATURDAY @ 6.30 PM", width / 2, 1300);
 
-      ctx.fillStyle = "#8e6446";
-      ctx.font = 'italic 400 23px "Playfair Display", serif';
-      ctx.fillText("Purameri, Kerala", width / 2, 1368);
-
-      // 11. Blessings & Regards
-      ctx.fillStyle = "#8e6446";
-      ctx.font = '32px "Amiri", serif';
-      ctx.fillText("بارك الله لكما وبارك عليكما وجمع بينكما في خير", width / 2, 1490);
-
-      ctx.fillStyle = "#a8785e";
-      ctx.font = 'italic 600 20px "Playfair Display", serif';
-      ctx.letterSpacing = "4px";
-      ctx.fillText("WITH BEST COMPLIMENTS", width / 2, 1575);
-      ctx.letterSpacing = "0px";
-
-      ctx.fillStyle = "#6f4e37";
-      ctx.font = 'italic 600 34px "Playfair Display", serif';
-      ctx.fillText("Punathil Family", width / 2, 1630);
+      // Sharing The Happiness
+      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
+      ctx.font = '600 16px "Cinzel", serif';
+      ctx.fillText("SHARING THE HAPPINESS", width / 2, 1420);
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '700 22px "Cinzel", serif';
+      ctx.fillText("MUHAMMED SHAHAS, MUHAMMED SHANIS", width / 2, 1465);
+      ctx.font = '600 18px "Cinzel", serif';
+      ctx.fillStyle = "#dfba73";
+      ctx.fillText("PUNATHIL FAMILY & PUTHIYOTTIL FAMILY", width / 2, 1505);
 
       return canvas;
     }
 
-    // Direct Browser Download & Mobile Share
     async function downloadInvitationCard() {
       const btnText = document.getElementById("dlBtnText");
       const btnSubtext = document.getElementById("dlBtnSubtext");
@@ -674,26 +744,21 @@
 
       try {
         btn.disabled = true;
-        btnText.textContent = "Generating...";
+        btnText.textContent = "Creating...";
         btnSubtext.textContent = "Please wait";
         iconNormal.classList.add("hidden");
         iconSpinner.classList.remove("hidden");
 
-        // Wait for all custom fonts (Amiri, Playfair, Great Vibes) to be ready
         await document.fonts.ready;
-
-        // Render card onto in-memory Canvas
         const canvas = await generateCardCanvas();
 
         const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png", 1.0));
-        const filename = "Wedding-Invitation-Muhammed-Ajas-and-Saniya-Sabah.png";
+        const filename = "Wedding-Invitation-Muhammed-Ajas-Saniya-Sabah.png";
         const file = new File([blob], filename, { type: "image/png" });
 
-        // Accurate device check for mobile touchscreens
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
                          (navigator.maxTouchPoints > 1 && window.innerWidth <= 1024);
 
-        // Mobile: Web Share API opens the native sheet ("Save Image" to Camera Roll / Photos)
         if (isMobile && navigator.canShare && navigator.canShare({ files: [file] })) {
           try {
             await navigator.share({
@@ -707,7 +772,6 @@
           }
         }
 
-        // Laptops/Desktops: Standard direct file download
         const blobUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = blobUrl;
@@ -722,11 +786,10 @@
 
       } catch (error) {
         console.error("Card generation failed:", error);
-        alert("Could not complete download. Please try again.");
       } finally {
         btn.disabled = false;
-        btnText.textContent = "Download Card";
-        btnSubtext.textContent = "Save Invitation Card";
+        btnText.textContent = "Save Card";
+        btnSubtext.textContent = "Download High-Res Image";
         iconNormal.classList.remove("hidden");
         iconSpinner.classList.add("hidden");
       }
