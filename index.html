@@ -372,7 +372,7 @@
         </div>
         <div class="text-left">
           <p id="dlBtnText" class="font-cinzel text-[10.5px] font-semibold text-[#faeed1]">Save Card</p>
-          <p id="dlBtnSubtext" class="text-[10px] text-[#dfba73]">High-Res Card</p>
+          <p id="dlBtnSubtext" class="text-[10px] text-[#dfba73]">Full-Size Card</p>
         </div>
       </button>
     </section>
@@ -386,7 +386,7 @@
 
   </div>
 
-  <!-- Scripts: Audio Engine, Live Countdown & Full-Scale Card Generator -->
+  <!-- Scripts -->
   <script>
     const coverPage = document.getElementById("coverPage");
     const audio = document.getElementById("bgAudio");
@@ -542,201 +542,228 @@
     updateCountdown();
 
     // ============================================================
-    // FULL-SIZE, HIGH-RESOLUTION (1800 x 2600 px) WEDDING CARD GENERATOR
+    // EXPANDED, HIGH-RESOLUTION CARD GENERATOR (LARGER FONTS & FILLED BOTTOM)
     // ============================================================
     async function generateCardCanvas() {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       
+      // Proportional 1800 x 2400 format (eliminating dead space at the bottom)
       const width = 1800;
-      const height = 2600;
+      const height = 2400;
       canvas.width = width;
       canvas.height = height;
 
-      // 1. Rich Charcoal Obsidian Base
-      ctx.fillStyle = "#0c100e";
+      // 1. Rich Charcoal Black Slate Background
+      ctx.fillStyle = "#0a0d0c";
       ctx.fillRect(0, 0, width, height);
 
-      // Subtle radial lighting glow in center
-      const radialGlow = ctx.createRadialGradient(width / 2, 900, 100, width / 2, 900, 1000);
-      radialGlow.addColorStop(0, "rgba(35, 45, 40, 0.45)");
-      radialGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+      // Radial lighting glow across the center
+      const radialGlow = ctx.createRadialGradient(width / 2, height / 2, 80, width / 2, height / 2, width * 0.7);
+      radialGlow.addColorStop(0, "rgba(38, 50, 44, 0.5)");
+      radialGlow.addColorStop(0.6, "rgba(18, 24, 21, 0.4)");
+      radialGlow.addColorStop(1, "rgba(5, 7, 6, 0.95)");
       ctx.fillStyle = radialGlow;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Heavy Double Gold Outer Border
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.6)";
-      ctx.lineWidth = 4;
-      ctx.strokeRect(60, 60, width - 120, height - 120);
+      // 2. Bold Double Gold Border
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.7)";
+      ctx.lineWidth = 5;
+      ctx.strokeRect(55, 55, width - 110, height - 110);
 
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.3)";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(80, 80, width - 160, height - 160);
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.35)";
+      ctx.lineWidth = 2.5;
+      ctx.strokeRect(75, 75, width - 150, height - 150);
 
-      // Corner Corner Points
-      const drawPoint = (x, y) => {
+      // Corner Accents
+      const drawCornerDot = (x, y) => {
         ctx.fillStyle = "#dfba73";
         ctx.beginPath();
-        ctx.arc(x, y, 6, 0, Math.PI * 2);
+        ctx.arc(x, y, 7, 0, Math.PI * 2);
         ctx.fill();
       };
-      drawPoint(80, 80);
-      drawPoint(width - 80, 80);
-      drawPoint(80, height - 80);
-      drawPoint(width - 80, height - 80);
+      drawCornerDot(75, 75);
+      drawCornerDot(width - 75, 75);
+      drawCornerDot(75, height - 75);
+      drawCornerDot(width - 75, height - 75);
 
       ctx.textAlign = "center";
 
-      // 3. Spiritual Invocation Header
+      // 3. Header: Bismillah / Spiritual Invocation (Expanded Size)
       ctx.fillStyle = "#dfba73";
-      ctx.font = '600 28px "Cinzel", serif';
-      ctx.letterSpacing = "4px";
-      ctx.fillText("IN THE NAME OF ALLAH", width / 2, 220);
-      ctx.font = '500 22px "Cinzel", serif';
-      ctx.letterSpacing = "2px";
+      ctx.font = '600 32px "Cinzel", serif';
+      ctx.letterSpacing = "5px";
+      ctx.fillText("IN THE NAME OF ALLAH", width / 2, 170);
+      
+      ctx.font = '500 24px "Cinzel", serif';
+      ctx.letterSpacing = "3px";
       ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
-      ctx.fillText("THE MOST BENEFICENT AND THE MOST MERCIFUL", width / 2, 265);
+      ctx.fillText("THE MOST BENEFICENT AND THE MOST MERCIFUL", width / 2, 215);
       ctx.letterSpacing = "0px";
 
-      // Small Decorative Line
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.4)";
-      ctx.lineWidth = 1.5;
+      // Divider
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.5)";
+      ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(width / 2 - 140, 310);
-      ctx.lineTo(width / 2 + 140, 310);
+      ctx.moveTo(width / 2 - 160, 255);
+      ctx.lineTo(width / 2 + 160, 255);
       ctx.stroke();
 
-      // 4. Parents Details
+      // 4. Parents Details (Enlarged)
       ctx.fillStyle = "#faeed1";
-      ctx.font = '600 36px "Cinzel", serif';
-      ctx.letterSpacing = "2px";
-      ctx.fillText("ABDUL AZEEZ & SUFAIRA AZEEZ", width / 2, 395);
-      ctx.letterSpacing = "0px";
-
-      ctx.font = '500 26px "Cinzel", serif';
-      ctx.fillStyle = "#dfba73";
-      ctx.fillText("PUNATHIL HOUSE, PURAMERI", width / 2, 445);
-      ctx.fillText("MOB : 9496164049", width / 2, 490);
-
-      ctx.font = '400 23px "Cinzel", serif';
-      ctx.fillStyle = "rgba(250, 238, 209, 0.9)";
+      ctx.font = '700 42px "Cinzel", serif';
       ctx.letterSpacing = "3px";
-      ctx.fillText("REQUEST THE PLEASURE OF YOUR PRESENCE", width / 2, 580);
-      ctx.fillText("ON THE OCCASION OF THE MARRIAGE OF OUR SON", width / 2, 620);
+      ctx.fillText("ABDUL AZEEZ & SUFAIRA AZEEZ", width / 2, 340);
       ctx.letterSpacing = "0px";
 
-      // 5. Groom Name & Lineage (Grand Scale)
-      ctx.fillStyle = "#faeed1";
-      ctx.font = '500 135px "Alex Brush", cursive';
-      ctx.fillText("Muhammed Ajas", width / 2, 790);
+      ctx.font = '600 29px "Cinzel", serif';
+      ctx.fillStyle = "#dfba73";
+      ctx.fillText("PUNATHIL HOUSE, PURAMERI", width / 2, 390);
+      
+      ctx.font = '500 28px "Montserrat", sans-serif';
+      ctx.fillText("MOB : 9496164049", width / 2, 435);
 
-      ctx.fillStyle = "rgba(223, 186, 115, 0.88)";
-      ctx.font = '600 22px "Cinzel", serif';
+      ctx.font = '500 25px "Cinzel", serif';
+      ctx.fillStyle = "rgba(250, 238, 209, 0.92)";
+      ctx.letterSpacing = "3px";
+      ctx.fillText("REQUEST THE PLEASURE OF YOUR PRESENCE", width / 2, 515);
+      ctx.fillText("ON THE OCCASION OF THE MARRIAGE OF OUR SON", width / 2, 560);
+      ctx.letterSpacing = "0px";
+
+      // 5. Groom Name & Lineage (Grand 170px Typography)
+      ctx.fillStyle = "#faeed1";
+      ctx.font = '500 170px "Alex Brush", cursive';
+      ctx.fillText("Muhammed Ajas", width / 2, 750);
+
+      ctx.fillStyle = "rgba(223, 186, 115, 0.9)";
+      ctx.font = '600 26px "Cinzel", serif';
       ctx.letterSpacing = "2px";
-      ctx.fillText("(GRAND S/O. LATE ANDRU HAJI & KUNHI MOIDU)", width / 2, 850);
+      ctx.fillText("(GRAND S/O. LATE ANDRU HAJI & KUNHI MOIDU)", width / 2, 815);
       ctx.letterSpacing = "0px";
 
       // Ampersand
-      ctx.font = '400 60px "Alex Brush", cursive';
+      ctx.font = '400 70px "Alex Brush", cursive';
       ctx.fillStyle = "#dfba73";
-      ctx.fillText("- and -", width / 2, 940);
+      ctx.fillText("- and -", width / 2, 915);
 
-      // 6. Bride Name & Lineage (Grand Scale)
+      // 6. Bride Name & Lineage (Grand 170px Typography)
       ctx.fillStyle = "#faeed1";
-      ctx.font = '500 135px "Alex Brush", cursive';
-      ctx.fillText("Saniya Sabah", width / 2, 1075);
+      ctx.font = '500 170px "Alex Brush", cursive';
+      ctx.fillText("Saniya Sabah", width / 2, 1070);
 
-      ctx.fillStyle = "rgba(223, 186, 115, 0.88)";
-      ctx.font = '600 22px "Cinzel", serif';
+      ctx.fillStyle = "rgba(223, 186, 115, 0.9)";
+      ctx.font = '600 26px "Cinzel", serif';
       ctx.letterSpacing = "2px";
       ctx.fillText("(D/O. SABAH T.K & FASEEMA RAHIDA)", width / 2, 1135);
-      ctx.fillText("THOTTATHAM KUNNUMMAL, EDACHERI", width / 2, 1175);
+      ctx.fillText("THOTTATHAM KUNNUMMAL, EDACHERI", width / 2, 1180);
       ctx.letterSpacing = "0px";
 
-      // 7. Full Details Box (Saturday, 21 November, Purameri)
-      const boxW = 1460;
-      const boxH = 430;
+      // 7. Full Details Box (Expanded & Centered)
+      const boxW = 1520;
+      const boxH = 460;
       const boxX = (width - boxW) / 2;
-      const boxY = 1290;
+      const boxY = 1270;
 
-      ctx.fillStyle = "rgba(18, 23, 20, 0.9)";
+      ctx.fillStyle = "rgba(16, 21, 18, 0.92)";
       ctx.fillRect(boxX, boxY, boxW, boxH);
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.55)";
-      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.65)";
+      ctx.lineWidth = 3;
       ctx.strokeRect(boxX, boxY, boxW, boxH);
 
-      // Inner divider lines in the box
-      ctx.strokeStyle = "rgba(223, 186, 115, 0.35)";
-      ctx.lineWidth = 1.5;
+      // Vertical Dividers inside the box
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.4)";
+      ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(boxX + boxW / 3, boxY + 30);
-      ctx.lineTo(boxX + boxW / 3, boxY + boxH - 30);
-      ctx.moveTo(boxX + (boxW / 3) * 2, boxY + 30);
-      ctx.lineTo(boxX + (boxW / 3) * 2, boxY + boxH - 30);
+      ctx.moveTo(boxX + boxW / 3, boxY + 35);
+      ctx.lineTo(boxX + boxW / 3, boxY + boxH - 35);
+      ctx.moveTo(boxX + (boxW / 3) * 2, boxY + 35);
+      ctx.lineTo(boxX + (boxW / 3) * 2, boxY + boxH - 35);
       ctx.stroke();
 
       // Column 1: Saturday 5:00 PM
       const col1X = boxX + boxW / 6;
       ctx.fillStyle = "#faeed1";
-      ctx.font = '600 36px "Cinzel", serif';
-      ctx.fillText("SATURDAY", col1X, boxY + 200);
+      ctx.font = '700 40px "Cinzel", serif';
+      ctx.fillText("SATURDAY", col1X, boxY + 215);
       ctx.fillStyle = "#dfba73";
-      ctx.font = '500 30px "Cinzel", serif';
-      ctx.fillText("5.00 PM", col1X, boxY + 260);
+      ctx.font = '600 34px "Cinzel", serif';
+      ctx.fillText("5.00 PM", col1X, boxY + 280);
 
-      // Column 2: 21 November 2026
+      // Column 2: 21 November 2026 (Large Center Stamp)
       const col2X = width / 2;
       ctx.fillStyle = "#faeed1";
-      ctx.font = '300 130px "Cinzel", serif';
-      ctx.fillText("21", col2X, boxY + 185);
-      ctx.font = '700 30px "Cinzel", serif';
+      ctx.font = '300 175px "Cinzel", serif';
+      ctx.fillText("21", col2X, boxY + 205);
+      
+      ctx.font = '700 36px "Cinzel", serif';
       ctx.fillStyle = "#dfba73";
       ctx.letterSpacing = "4px";
-      ctx.fillText("NOVEMBER", col2X, boxY + 250);
-      ctx.font = '500 24px "Cinzel", serif';
-      ctx.fillStyle = "rgba(250, 238, 209, 0.9)";
-      ctx.fillText("2026", col2X, boxY + 295);
-      ctx.font = '400 19px "Montserrat", sans-serif';
+      ctx.fillText("NOVEMBER", col2X, boxY + 275);
+      
+      ctx.font = '600 28px "Cinzel", serif';
+      ctx.fillStyle = "rgba(250, 238, 209, 0.95)";
+      ctx.fillText("2026", col2X, boxY + 325);
+      
+      ctx.font = '500 22px "Montserrat", sans-serif';
       ctx.fillStyle = "#dfba73";
-      ctx.letterSpacing = "1px";
-      ctx.fillText("11-JAMADUL AKHIR 1448", col2X, boxY + 345);
+      ctx.letterSpacing = "1.5px";
+      ctx.fillText("11-JAMADUL AKHIR 1448", col2X, boxY + 380);
       ctx.letterSpacing = "0px";
 
       // Column 3: Venue
       const col3X = boxX + (boxW / 6) * 5;
       ctx.fillStyle = "#faeed1";
-      ctx.font = '600 34px "Cinzel", serif';
-      ctx.fillText("PUNATHIL HOUSE", col3X, boxY + 200);
+      ctx.font = '700 38px "Cinzel", serif';
+      ctx.fillText("PUNATHIL HOUSE", col3X, boxY + 215);
       ctx.fillStyle = "#dfba73";
-      ctx.font = '500 30px "Cinzel", serif';
-      ctx.fillText("PURAMERI", col3X, boxY + 260);
+      ctx.font = '600 34px "Cinzel", serif';
+      ctx.fillText("PURAMERI", col3X, boxY + 280);
 
-      // 8. Nikah Ceremony Banner
+      // 8. Nikah Ceremony Banner (Fills Upper Bottom Space)
+      const nikahY = 1840;
+      ctx.fillStyle = "rgba(223, 186, 115, 0.12)";
+      ctx.fillRect(width / 2 - 450, nikahY - 50, 900, 75);
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.5)";
+      ctx.lineWidth = 1.8;
+      ctx.strokeRect(width / 2 - 450, nikahY - 50, 900, 75);
+
       ctx.fillStyle = "#faeed1";
       ctx.font = '700 40px "Cinzel", serif';
       ctx.letterSpacing = "4px";
-      ctx.fillText("NIKAH: 21 SATURDAY @ 6.30 PM", width / 2, 1870);
+      ctx.fillText("NIKAH: 21 SATURDAY @ 6.30 PM", width / 2, nikahY);
       ctx.letterSpacing = "0px";
 
       // Heart Accent
       ctx.fillStyle = "#dfba73";
-      ctx.font = '24px "Montserrat", sans-serif';
+      ctx.font = '28px "Montserrat", sans-serif';
       ctx.fillText("❤", width / 2, 1945);
 
-      // 9. Sharing the Happiness
-      ctx.fillStyle = "rgba(223, 186, 115, 0.85)";
-      ctx.font = '500 24px "Cinzel", serif';
+      // 9. Sharing The Happiness & Family Credits (Fills Lower Bottom Space)
+      ctx.fillStyle = "rgba(223, 186, 115, 0.9)";
+      ctx.font = '600 28px "Cinzel", serif';
       ctx.letterSpacing = "4px";
-      ctx.fillText("SHARING THE HAPPINESS", width / 2, 2040);
+      ctx.fillText("SHARING THE HAPPINESS", width / 2, 2030);
       ctx.letterSpacing = "0px";
 
       ctx.fillStyle = "#faeed1";
-      ctx.font = '600 32px "Cinzel", serif';
-      ctx.fillText("MUHAMMED SHAHAS, MUHAMMED SHANIS", width / 2, 2100);
+      ctx.font = '700 38px "Cinzel", serif';
+      ctx.fillText("MUHAMMED SHAHAS, MUHAMMED SHANIS", width / 2, 2095);
 
-      ctx.font = '500 28px "Cinzel", serif';
+      ctx.font = '600 32px "Cinzel", serif';
       ctx.fillStyle = "#dfba73";
       ctx.fillText("PUNATHIL FAMILY & PUTHIYOTTIL FAMILY", width / 2, 2155);
+
+      // Bottom Decorative Floral Accent to complete the card layout
+      ctx.strokeStyle = "rgba(223, 186, 115, 0.4)";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(width / 2 - 200, 2220);
+      ctx.lineTo(width / 2 + 200, 2220);
+      ctx.stroke();
+
+      ctx.fillStyle = "#dfba73";
+      ctx.font = '18px "Cinzel", serif';
+      ctx.fillText("✦   ✦   ✦", width / 2, 2255);
 
       return canvas;
     }
@@ -752,7 +779,7 @@
       try {
         btn.disabled = true;
         btnText.textContent = "Creating...";
-        btnSubtext.textContent = "High-Res 300DPI";
+        btnSubtext.textContent = "Full-Size 300DPI";
         iconNormal.classList.add("hidden");
         iconSpinner.classList.remove("hidden");
 
@@ -797,7 +824,7 @@
       } finally {
         btn.disabled = false;
         btnText.textContent = "Save Card";
-        btnSubtext.textContent = "High-Res Card";
+        btnSubtext.textContent = "Full-Size Card";
         iconNormal.classList.remove("hidden");
         iconSpinner.classList.add("hidden");
       }
